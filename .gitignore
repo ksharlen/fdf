@@ -52,6 +52,8 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
+tmp
 .vscode
 temp/
 fdf
+!/fdf_maps/fdf
