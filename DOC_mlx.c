@@ -57,7 +57,7 @@ int		mlx_pixel_put(void *mlx_ptr, void *win_ptr, int x, int y, int color);
 		//color - цвет точки
 
 /*
-**Вставляет стркоу в окно которая передается параметром string
+**Вставляет строку в окно которая передается параметром string
 **Возвращает невалидное значение
 */
 int		mlx_string_put(void *mlx_ptr, void *win_ptr, int x, int y, int color, char *string);
