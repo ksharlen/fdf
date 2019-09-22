@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:17:24 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/09/20 19:04:33 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/09/22 14:20:58 by bnigellu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,11 @@
 
 # include "libft.h"
 # include "mlx.h"
+# include "keysymdef.h"
 
+typedef struct s_fdf
+{
+	void	*mlx_ptr;
+	void	*win_ptr;
+}			t_fdf;
 #endif
