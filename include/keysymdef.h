@@ -114,6 +114,7 @@ SOFTWARE.
 
 #define XK_VoidSymbol                  0xffffff  /* Void symbol */
 
+#define XK_MISCELLANY
 #ifdef XK_MISCELLANY
 /*
  * TTY function keys, cleverly chosen to map to ASCII, for convenience of

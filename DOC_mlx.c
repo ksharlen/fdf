@@ -74,15 +74,15 @@ int		mlx_string_put(void *mlx_ptr, void *win_ptr, int x, int y, int color, char 
 **Возвращает идендификатор этого изображения
 **Защита: Если возвращает NULL значит не удалось выделить память для изображения
 */
-void	*mlx_new_image ( void *mlx_ptr, int width, int height );
+void	*mlx_new_image(void *mlx_ptr, int width, int height);
 		//mlx_ptr - идендификатор соединения
 		//width - ширина изображения
 		//height - высота изображения
 
 /*
-**Возвращает возвращает начало области памяти где расположенно изображение
+**Возвращает начало области памяти где расположенно изображение
 */
-char 	*mlx_get_data_addr ( void *img_ptr, int *bits_per_pixel, int *size_line, int *endian );
+char 	*mlx_get_data_addr (void *img_ptr, int *bits_per_pixel, int *size_line, int *endian);
 		//img_ptr - Определяет используемое изображение(то изображение с которым ф-ия будет работать)
 		//bits_per_pixel - число битов необходимых для представления одно пикселя
 		//size_line - количество байт, используемых для хранения одной строки изображения в памяти
