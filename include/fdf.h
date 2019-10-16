@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:17:24 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/17 01:50:26 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/17 01:59:17 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@
 # define POS_H 32
 # define FDF_SET_HEIGHT_L(val, height)	(((val) | (height)) << POS_H)
 # define FDF_SET_COLOR_L(val, color)	((val) | (color))
+# define FDF_GET_FAST_COLOR_L(val)		((val))
 # define FDF_GET_COLOR_L(val)			(((val) << POS_H) >> POS_H)
 # define FDF_GET_HEIGHT_L(val)			((val >> POS_H))
 
