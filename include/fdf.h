@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:17:24 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/16 22:32:30 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/17 01:50:26 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@
 # define WIN_Y 		1440
 # define FDF_MAP	argv[1]
 # define PART_STR	","
+# define MAP map->map
+# define MAX_X map->max_x
+# define MAX_Y map->max_y
 
 /*
 **ERRORS_FDF
@@ -44,7 +47,18 @@
 **SYS_ERRORS
 */
 # define FDF_CHK_ERR(val, err) if ((val) == FAILURE) ft_err_exit(err, P_N)
-# define FDF_CHK_END(str) ((*str))
+# define FDF_CHK_NULL_PTR(ptr, err) if (!(ptr)) ft_err_exit(err, P_N)
+
+/*
+**color and height repository
+*/
+# define POS_H 32
+# define FDF_SET_HEIGHT_L(val, height)	(((val) | (height)) << POS_H)
+# define FDF_SET_COLOR_L(val, color)	((val) | (color))
+# define FDF_GET_COLOR_L(val)			(((val) << POS_H) >> POS_H)
+# define FDF_GET_HEIGHT_L(val)			((val >> POS_H))
+
+typedef long int	t_map;
 
 typedef struct	s_cfg_image
 {
@@ -70,7 +84,9 @@ struct			s_ptr
 
 struct			s_map
 {
-	t_pixel		**map;
+	t_map		**map;
+	size_t		max_x;
+	size_t		max_y;
 	int			scale;
 };
 
@@ -98,6 +114,7 @@ int				fdf_valid_arg(const int argc, char *const argv[]);
 void			list_add_end(t_listfdf **beg, char *line);
 t_listfdf		*list_create(char *line);
 void			list_delete(t_listfdf **beg);
+size_t			list_size(t_listfdf *beg);
 
 /*
 **READ_FILE
@@ -105,8 +122,9 @@ void			list_delete(t_listfdf **beg);
 t_listfdf		*fdf_read_file(const char *filename);
 
 /*
-**PARSING_MAP
+**WORK_MAP
 */
 enum e_err		fdf_parsing_map(t_listfdf *beg);
+void			fdf_create_map(t_listfdf *beg, struct s_map *map);
 
 #endif

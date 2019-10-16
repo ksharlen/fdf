@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf_read_file.c                                    :+:      :+:    :+:   */
+/*   fdf_create_map.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/15 22:21:44 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/17 00:11:20 by ksharlen         ###   ########.fr       */
+/*   Created: 2019/10/16 22:50:14 by ksharlen          #+#    #+#             */
+/*   Updated: 2019/10/16 23:55:24 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_listfdf	*fdf_read_file(const char *filename)
+void	fdf_create_map(t_listfdf *beg, struct s_map *map)
 {
-	t_listfdf		*beg;
-	struct s_gnl	gnl;
-	int				fd;
-
-	beg = NULL;
-	FDF_CHK_ERR(fd = open(filename, O_RDONLY), E_OPEN);
-	while ((gnl.ret = get_next_line(fd, &gnl.line, FLAG_OFF)))
-	{
-		FDF_CHK_ERR(gnl.ret, E_MALLOC);
-		list_add_end(&beg, gnl.line);
-	}
-	get_next_line(fd, NULL, FLAG_ON);
-	FDF_CHK_ERR(close(fd), E_CLOSE);
-	return (beg);
+	MAX_X = list_size(beg);
+	MAX_Y = ft_num_words(beg->line, PART_STR);
+	FDF_CHK_NULL_PTR(MAP = (t_map **)ft_memalloc(sizeof(t_map *) *
+		(MAX_X * MAX_Y)), E_MALLOC);
+	
 }

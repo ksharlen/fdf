@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:58:21 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/16 22:22:05 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/17 00:16:24 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static int			valid_file(const char *filename)
 {
 	enum e_err	err;
 	int			fd;
+	ssize_t		byte_read;
 
 	err = FAILURE;
 	if (filename && *filename)
@@ -24,6 +25,7 @@ static int			valid_file(const char *filename)
 		if (fd != FAILURE)
 		{
 			err = SUCCESS;
+			FDF_CHK_ERR(byte_read = read(fd, NULL, 0), E_READ); //NULL видимо можно
 			if (close(fd) == FAILURE)
 				ft_err_exit(E_CLOSE, PROG_NAME);
 		}

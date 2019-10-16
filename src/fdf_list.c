@@ -6,11 +6,22 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 21:50:30 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/16 19:45:25 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/16 22:53:45 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+size_t		list_size(t_listfdf *beg)
+{
+	size_t	list_size;
+
+	list_size = 0;
+	if (beg)
+		while (beg)
+			++list_size && (beg = beg->next);
+	return (list_size);
+}
 
 void		list_delete(t_listfdf **beg)
 {

@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:53:27 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/16 22:42:21 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/17 00:10:07 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@
 
 int		main(int argc, char **argv)
 {
-	t_listfdf	*beg;
+	t_listfdf		*beg;
+	struct s_map	map;
 
 	if (fdf_valid_arg(argc, argv) == SUCCESS)
 	{
@@ -32,7 +33,7 @@ int		main(int argc, char **argv)
 		if ((beg = fdf_read_file(FDF_MAP)))
 		{
 			fdf_parsing_map(beg);
-			fdf_create_map(beg);
+			fdf_create_map(beg, &map);
 			// print_lines(beg);
 			// creating_map(beg);
 			// list_delete(&beg);

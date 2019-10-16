@@ -6,7 +6,7 @@
 #    By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/18 08:27:12 by ksharlen          #+#    #+#              #
-#    Updated: 2019/10/16 22:21:09 by ksharlen         ###   ########.fr        #
+#    Updated: 2019/10/16 22:51:58 by ksharlen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,8 @@ SRCS				:= main.c\
 							fdf_valid_arg.c\
 							fdf_read_file.c\
 							fdf_list.c\
-							fdf_parsing_map.c
+							fdf_parsing_map.c\
+							fdf_create_map.c
 
 OBJS				:= $(SRCS:.c=.o)
 DIRS_INCLUDE		:= $(DIR_INCLUDE_LIBFT) $(DIR_INCLUDE_FDF) $(DIR_INCLUDE_MLX)
