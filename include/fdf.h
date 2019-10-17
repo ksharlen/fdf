@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:17:24 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/17 18:39:26 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/17 23:12:30 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,47 +58,48 @@
 # define FDF_SET_COLOR_L(val, color)	((val) | (color))
 # define FDF_GET_FAST_COLOR_L(val)		((val))
 # define FDF_GET_COLOR_L(val)			(((val) << POS_H) >> POS_H)
-# define FDF_GET_HEIGHT_L(val)			((val >> POS_H))
+# define FDF_GET_HEIGHT_L(val)			(((val) >> POS_H))
+# define FDF_SET_HC_L(v, h, c) FDF_SET_HEIGHT_L(v, h) | FDF_SET_COLOR_L(v, c)
 
-typedef long int	t_map;
+typedef intmax_t	t_map;
 
-typedef struct	s_cfg_image
+typedef struct		s_cfg_image
 {
 	int	bits_per_pixel;
 	int	size_line;
 	int	endian;
-}				t_cfg_image;
+}					t_cfg_image;
 
-typedef struct	s_pixel
+typedef struct		s_pixel
 {
 	int	x;
 	int	y;
 	int	z;
 	int	color;
-}				t_pixel;
+}					t_pixel;
 
-struct			s_ptr
+struct				s_ptr
 {
 	void		*mlx_ptr;
 	void		*mlx_win;
 	void		*mlx_image;
 };
 
-struct			s_map
+struct				s_map
 {
-	t_map		**map;
+	t_map		*map;
 	size_t		max_x;
 	size_t		max_y;
 	int			scale;
 };
 
-typedef struct	s_listfdf
+typedef struct		s_listfdf
 {
 	char				*line;
 	struct s_listfdf	*next;
-}				t_listfdf;
+}					t_listfdf;
 
-struct			s_gnl
+struct				s_gnl
 {
 	char		*line;
 	int			ret;
@@ -107,25 +108,25 @@ struct			s_gnl
 /*
 **VALID
 */
-int				fdf_valid_arg(const int argc, char *const argv[]);
+int					fdf_valid_arg(const int argc, char *const argv[]);
 
 /*
 **FDF_LIST
 */
-void			list_add_end(t_listfdf **beg, char *line);
-t_listfdf		*list_create(char *line);
-void			list_delete(t_listfdf **beg);
-size_t			list_size(t_listfdf *beg);
+void				list_add_end(t_listfdf **beg, char *line);
+t_listfdf			*list_create(char *line);
+void				list_delete(t_listfdf **beg);
+size_t				list_size(t_listfdf *beg);
 
 /*
 **READ_FILE
 */
-t_listfdf		*fdf_read_file(const char *filename);
+t_listfdf			*fdf_read_file(const char *filename);
 
 /*
 **WORK_MAP
 */
-enum e_err		fdf_parsing_map(t_listfdf *beg);
-void			fdf_create_map(t_listfdf *beg, struct s_map *map);
+enum e_err			fdf_parsing_map(t_listfdf *beg, struct s_map *map);
+void				fdf_create_map(t_listfdf *beg, struct s_map *map);
 
 #endif

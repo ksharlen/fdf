@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:53:27 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/17 00:10:07 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/17 23:19:52 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@ int		main(int argc, char **argv)
 		beg = NULL;
 		if ((beg = fdf_read_file(FDF_MAP)))
 		{
-			fdf_parsing_map(beg);
-			fdf_create_map(beg, &map);
+			fdf_parsing_map(beg, &map);
+			list_delete(&beg);
+			// fdf_create_map(beg, &map);
 			// print_lines(beg);
 			// creating_map(beg);
 			// list_delete(&beg);

@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 19:48:23 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/17 18:40:10 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/17 18:51:14 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ static size_t		valid_map(t_listfdf *beg)
 	return (SUCCESS);
 }
 
-enum e_err			fdf_parsing_map(t_listfdf *beg)
+enum e_err			fdf_parsing_map(t_listfdf *beg, struct s_map *map)
 {
 	size_t		size_line;
 
 	size_line = valid_map(beg);
-	
+	fdf_create_map(beg, map);
 	return (SUCCESS);
 }
