@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 22:50:14 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/17 23:15:30 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/17 23:42:13 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static const char	*fill_elem(const char *file_line, t_map *elem)
 	unsigned	color;
 
 	*elem = 0;
-	color = 0;
+	color = DFLT_COLOR;
 	height = ft_atoi_base_ptr(file_line, DECIMAL, &p_file_line);
 	if (p_file_line && *p_file_line == ',')
 	{
@@ -91,5 +91,5 @@ void		fdf_create_map(t_listfdf *beg, struct s_map *map)
 	CHK_NULL_PTR(MAP = (t_map *)ft_memalloc(sizeof(t_map) *
 		(MAX_X * MAX_Y)), E_MALLOC, P_N);
 	fill_map(beg, map);
-	print_map(map);
+	print_map(NULL);
 }

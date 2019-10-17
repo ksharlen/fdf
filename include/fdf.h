@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:17:24 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/17 23:12:30 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/18 00:00:23 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,15 @@
 # define FDF_TITTLE	"fdf"
 # define WIN_X		2560
 # define WIN_Y 		1440
+# define DFLT_COLOR	0xff0000
 # define FDF_MAP	argv[1]
 # define PART_STR	","
 # define MAP map->map
 # define MAX_X map->max_x
 # define MAX_Y map->max_y
+# define MLX_PTR ptr.mlx_ptr
+# define MLX_WIN ptr.mlx_win
+# define MLX_IMG ptr.mlx_image
 # define FDF_CHK_FILE NULL
 
 /*
