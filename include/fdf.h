@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:17:24 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/17 01:59:17 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/17 18:39:26 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # define MAP map->map
 # define MAX_X map->max_x
 # define MAX_Y map->max_y
+# define FDF_CHK_FILE NULL
 
 /*
 **ERRORS_FDF
@@ -46,8 +47,8 @@
 /*
 **SYS_ERRORS
 */
-# define FDF_CHK_ERR(val, err) if ((val) == FAILURE) ft_err_exit(err, P_N)
-# define FDF_CHK_NULL_PTR(ptr, err) if (!(ptr)) ft_err_exit(err, P_N)
+# define FDF_CHK_ERR(val, err) if ((val) == F) FDF_PRINT_ERR_EXT(err)
+# define FDF_CHK_NUMM_PTR(ptr, err) if (!(val)) FDF_PRINT_ERR_EXT(err)
 
 /*
 **color and height repository
@@ -94,7 +95,6 @@ struct			s_map
 typedef struct	s_listfdf
 {
 	char				*line;
-	size_t				size_line;
 	struct s_listfdf	*next;
 }				t_listfdf;
 

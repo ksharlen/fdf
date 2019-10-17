@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:58:21 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/17 00:16:24 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/17 18:30:30 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,8 @@ static int			valid_file(const char *filename)
 		if (fd != FAILURE)
 		{
 			err = SUCCESS;
-			FDF_CHK_ERR(byte_read = read(fd, NULL, 0), E_READ); //NULL видимо можно
-			if (close(fd) == FAILURE)
-				ft_err_exit(E_CLOSE, PROG_NAME);
+			FDF_CHK_ERR(byte_read = read(fd, FDF_CHK_FILE, 0), FDF_NOT_VALID);
+			CHK_SYS_ERR_EXT(close(fd), E_CLOSE, P_N);
 		}
 		else
 			FDF_PRINT_ERR(FDF_NOT_VALID);

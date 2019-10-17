@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 21:50:30 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/16 22:53:45 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/17 18:37:23 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,9 @@ t_listfdf	*list_create(char *line)
 	new = NULL;
 	if (line)
 	{
-		new = (t_listfdf *)ft_memalloc(sizeof(t_listfdf));
-		if (!new)
-			ft_err_exit(E_MALLOC, "fdf");
+		CHK_NULL_PTR(new = (t_listfdf *)ft_memalloc(sizeof(t_listfdf)),
+			E_MALLOC, P_N);
 		new->line = line;
-		new->size_line = ft_strlen(line);
 		new->next = NULL;
 	}
 	return (new);
