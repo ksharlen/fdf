@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 22:41:37 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/18 23:26:17 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/18 23:36:48 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,16 @@ static int	mouse_press(int button, int x, int y, void *param)
 	return (SUCCESS);
 }
 
+static int	mouse_mov(int x, int y, void *param)
+{
+	return (SUCCESS);
+}
+
 void		fdf_events(struct s_ptr *mlx_ptr)
 {
-	mlx_hook(MLX_WIN, FDF_KEY_PRESS, FDF_X_MASK, key_press, NULL); //Подупать над param
-	mlx_hook(MLX_WIN, FDF_RED_BUTTON, FDF_X_MASK, red_button, NULL);
-	mlx_hook(MLX_WIN, FDF_MOUSE_BUTTON_PRESS, FDF_X_MASK, mouse_press, NULL);
+	mlx_hook(MLX_WIN, FDF_KEY_PRESS, FDF_NOT_WORK, key_press, NULL); //Подупать над param
+	mlx_hook(MLX_WIN, FDF_RED_BUTTON, FDF_NOT_WORK, red_button, NULL);
+	mlx_hook(MLX_WIN, FDF_MOUSE_BUTTON_PRESS, FDF_NOT_WORK, mouse_press, NULL);
+	mlx_hook(MLX_WIN, FDF_MOUSE_MOVEMENT, FDF_NOT_WORK, mouse_mov, NULL);
 	mlx_loop(MLX_PTR);
 }

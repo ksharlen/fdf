@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:17:24 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/18 23:27:15 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/18 23:35:48 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@
 /*
 **EVENTS
 */
-# define FDF_X_MASK					0
+# define FDF_NOT_WORK				0
 # define FDF_KEY_PRESS				2
 # define FDF_KEY_RELEASE			3
 # define FDF_MOUSE_BUTTON_PRESS		4
