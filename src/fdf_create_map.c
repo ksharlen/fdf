@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 22:50:14 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/18 18:43:32 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/18 21:33:08 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,31 +45,31 @@ static void	fill_line(const int ind_line, const char *file_line, struct s_map *m
 	}
 }
 
-static void	print_map(struct s_map *map)
-{
-	size_t		i;
-	size_t		j;
-	int			height;
-	unsigned	color;
+// static void	print_map(struct s_map *map)
+// {
+// 	size_t		i;
+// 	size_t		j;
+// 	int			height;
+// 	unsigned	color;
 
-	i = 0;
-	if (map)
-	while (i < MAX_Y)
-	{
-		j = 0;
-		while (j < MAX_X)
-		{
-			height = 0;
-			color = 0;
-			height = FDF_GET_HEIGHT_L(*(MAP + i * MAX_X + j));
-			color = (unsigned)FDF_GET_COLOR_L(*(MAP + i * MAX_X + j));
-			ft_printf("%d|%u		", height, color);
-			++j;
-		}
-		ft_printf("\n");
-		++i;
-	}
-}
+// 	i = 0;
+// 	if (map)
+// 	while (i < MAX_Y)
+// 	{
+// 		j = 0;
+// 		while (j < MAX_X)
+// 		{
+// 			height = 0;
+// 			color = 0;
+// 			height = FDF_GET_HEIGHT_L(*(MAP + i * MAX_X + j));
+// 			color = (unsigned)FDF_GET_COLOR_L(*(MAP + i * MAX_X + j));
+// 			ft_printf("%d|%u		", height, color);
+// 			++j;
+// 		}
+// 		ft_printf("\n");
+// 		++i;
+// 	}
+// }
 
 static void	fill_map(const t_listfdf *beg, struct s_map *map)
 {
@@ -91,5 +91,5 @@ void		fdf_create_map(t_listfdf *beg, struct s_map *map)
 	CHK_NULL_PTR(MAP = (t_map *)ft_memalloc(sizeof(t_map) *
 		(MAX_X * MAX_Y)), E_MALLOC, P_N);
 	fill_map(beg, map);
-	print_map(map);
+	// print_map(map);
 }

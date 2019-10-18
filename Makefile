@@ -6,7 +6,7 @@
 #    By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/18 08:27:12 by ksharlen          #+#    #+#              #
-#    Updated: 2019/10/18 18:36:42 by ksharlen         ###   ########.fr        #
+#    Updated: 2019/10/18 21:08:33 by ksharlen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ SRCS				:= main.c\
 							fdf_list.c\
 							fdf_parsing_map.c\
 							fdf_create_map.c\
+							fdf_parsing_vector.c\
 							laMatrix.c\
 							laVectors.c
 
