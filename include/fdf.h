@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:17:24 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/18 00:00:23 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/18 18:33:44 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+# include "fdf_keymap.h"
+# include "LLFC.h"
 # include "libft.h"
 # include "mlx.h"
 
