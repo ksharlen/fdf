@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:17:24 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/18 22:46:55 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/18 23:27:15 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,22 +22,22 @@
 # include "libft.h"
 # include "mlx.h"
 
-# define PROG_NAME	"fdf"
-# define P_N PROG_NAME
+# define PROG_NAME		"fdf"
+# define P_N			PROG_NAME
 
-# define FDF_TITTLE	"fdf"
-# define WIN_X		2560
-# define WIN_Y 		1440
-# define DFLT_COLOR	0xff0000
-# define FDF_MAP	argv[1]
-# define PART_STR	","
-# define MAP map->map
-# define MAX_X map->max_x
-# define MAX_Y map->max_y
-# define MLX_PTR ptr.mlx_ptr
-# define MLX_WIN ptr.mlx_win
-# define MLX_IMG ptr.mlx_image
-# define FDF_CHK_FILE NULL
+# define FDF_TITTLE		"fdf"
+# define WIN_X			2560
+# define WIN_Y 			1440
+# define DFLT_COLOR		0xff0000
+# define FDF_MAP		argv[1]
+# define PART_STR		","
+# define MAP 			map->map
+# define MAX_X 			map->max_x
+# define MAX_Y 			map->max_y
+# define MLX_PTR 		mlx_ptr.mlx_ptr
+# define MLX_WIN 		mlx_ptr.mlx_win
+# define MLX_IMG 		mlx_ptr.mlx_image
+# define FDF_CHK_FILE 	NULL
 
 /*
 **ERRORS_FDF
@@ -79,6 +79,17 @@
 # define FDF_EXPOSE					12
 # define FDF_RED_BUTTON				17
 
+/*
+**MOUSE
+*/
+# define FDF_LEFT_BUTTON	1
+# define FDF_RIGHT_BUTTON	2
+# define FDF_MIDDLE_BUTTON	3
+# define FDF_SCROLL_UP		4
+# define FDF_SCROLL_DOWN	5
+# define FDF_SCROLL_LEFT	6
+# define FDF_SCROLL_RIGHT	7
+
 typedef intmax_t	t_map;
 
 typedef struct		s_cfg_image
@@ -87,14 +98,6 @@ typedef struct		s_cfg_image
 	int	size_line;
 	int	endian;
 }					t_cfg_image;
-
-typedef struct		s_pixel
-{
-	int	x;
-	int	y;
-	int	z;
-	int	color;
-}					t_pixel;
 
 struct				s_ptr
 {

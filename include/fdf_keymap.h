@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 16:44:18 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/18 18:35:40 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/18 23:00:44 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@
 # define FDF_C_BRACKET		0x1E
 # define FDF_O				0x1F
 
-
 # define FDF_U				0x20
 # define FDF_C_BRAKET		0x21
 # define FDF_I				0x22
@@ -78,7 +77,6 @@
 # define FDF_CAPS_LOCK		0x39
 # define FDF_OPTION			0x3A
 # define FDF_CONTROL		0x3B
-
 
 # define FDF_NUM_KEY_DOT	0x41
 # define FDF_NUM_KEY_MOV	0x43
@@ -109,7 +107,6 @@
 # define FDF_F14			0x6B
 # define FDF_F10			0x6D
 # define FDF_F12			0x6F
-
 
 # define FDF_F15			0x71
 # define FDF_HELP			0x72
