@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:17:24 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/18 18:33:44 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/18 22:46:55 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,18 @@
 # define FDF_GET_COLOR_L(val)			(((val) << POS_H) >> POS_H)
 # define FDF_GET_HEIGHT_L(val)			(((val) >> POS_H))
 # define FDF_SET_HC_L(v, h, c) FDF_SET_HEIGHT_L(v, h) | FDF_SET_COLOR_L(v, c)
+
+/*
+**EVENTS
+*/
+# define FDF_X_MASK					0
+# define FDF_KEY_PRESS				2
+# define FDF_KEY_RELEASE			3
+# define FDF_MOUSE_BUTTON_PRESS		4
+# define FDF_MOUSE_BUTTON_RELEASE	5
+# define FDF_MOUSE_MOVEMENT			6
+# define FDF_EXPOSE					12
+# define FDF_RED_BUTTON				17
 
 typedef intmax_t	t_map;
 
@@ -134,5 +146,16 @@ t_listfdf			*fdf_read_file(const char *filename);
 */
 enum e_err			fdf_parsing_map(t_listfdf *beg, struct s_map *map);
 void				fdf_create_map(t_listfdf *beg, struct s_map *map);
+
+/*
+**WORK_VECTOR
+*/
+vec3				*fdf_parsing_vector(struct s_map *map);
+
+/*
+**WORK_WINDOW
+*/
+void				fdf_work_window(vec3 *vec);
+void				fdf_events(struct s_ptr *ptr);
 
 #endif
