@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:17:24 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/23 20:31:56 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/23 20:51:38 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,25 @@
 # define FDF_GET_MAX_Y(val, beg) (val) = (list_size(beg))
 
 /*
+**ERRORS
+*/
+# define FDF_E_WIN				0
+# define FDF_E_IMG				1
+# define FDF_E_XPM_IMG			2
+# define FDF_E_XPM_FILE_IMG		3
+
+/*
 **ERRORS_FDF
 */
+# define FDF_CHK_ERR_EXT(val, err) if ((val) == F) fdf_err_ext(err)
+# define FDF_CHK_NULL_PTR(val, err) if (!(val)) fdf_err_ext(err)
+
 # define FDF_NO_ARG			"No arguments"
 # define FDF_TOO_MANY		"Too many argumets"
 # define FDF_NOT_VALID		"File doesn't exist or Permission denied"
 # define FDF_BAD_MAP		"Bad map"
 # define FORM_ERR			"%v%s: %s\n"
+# define FDF_CHK_ERR_EXT(val, err, name) if ((val) == F) 
 # define FDF_PRINT_ERR(err) ft_printf(FORM_ERR, STDERR_FILENO, PROG_NAME, err)
 # define FDF_PRINT_ERR_EXT(err) {FDF_PRINT_ERR(err); exit(EXIT_FAILURE);}
 
@@ -61,6 +73,7 @@
 # define FDF_CHK_ERR(val, err) if ((val) == F) FDF_PRINT_ERR_EXT(err)
 # define FDF_CHK_NUMM_PTR(ptr, err) if (!(val)) FDF_PRINT_ERR_EXT(err)
 
+//!need delete
 /*
 **color and height repository
 */
@@ -170,5 +183,11 @@ void				fdf_work_window(t_map *map);
 **EVENTS
 */
 void				fdf_events(struct s_ptr *mlx_ptr);
+
+/*
+**ERRORS
+*/
+void				fdf_err_str(const int err);
+void				fdf_err_ext(const int err);
 
 #endif
