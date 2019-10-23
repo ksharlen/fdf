@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:17:24 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/23 19:41:47 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/23 20:04:58 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define FDF_TITTLE	"fdf"
 # define WIN_X		2560
 # define WIN_Y 		1440
-# define DFLT_COLOR	0xff0000
+# define DFLT_COLOR	0x00ff00
 # define FDF_MAP	argv[1]
 # define PART_STR	","
 # define MAP map->map
