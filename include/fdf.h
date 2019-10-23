@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:17:24 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/23 20:04:58 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/23 20:31:56 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <unistd.h>
 
 # include "fdf_keymap.h"
-# include "LLFC.h"
 # include "libft.h"
 # include "mlx.h"
 
@@ -34,9 +33,9 @@
 # define MAP map->map
 # define MAX_X map->max_x
 # define MAX_Y map->max_y
-# define MLX_PTR ptr.mlx_ptr
-# define MLX_WIN ptr.mlx_win
-# define MLX_IMG ptr.mlx_image
+# define MLX_PTR mlx_ptr.mlx_ptr
+# define MLX_WIN mlx_ptr.mlx_win
+# define MLX_IMG mlx_ptr.mlx_image
 # define FDF_CHK_FILE NULL
 
 /*
@@ -72,6 +71,29 @@
 # define FDF_GET_COLOR_L(val)			(((val) << POS_H) >> POS_H)
 # define FDF_GET_HEIGHT_L(val)			(((val) >> POS_H))
 # define FDF_SET_HC_L(v, h, c) FDF_SET_HEIGHT_L(v, h) | FDF_SET_COLOR_L(v, c)
+
+/*
+**EVENTS
+*/
+# define FDF_NOT_WORK				0
+# define FDF_KEY_PRESS				2
+# define FDF_KEY_RELEASE			3
+# define FDF_MOUSE_BUTTON_PRESS		4
+# define FDF_MOUSE_BUTTON_RELEASE	5
+# define FDF_MOUSE_MOVEMENT			6
+# define FDF_EXPOSE					12
+# define FDF_RED_BUTTON				17
+
+/*
+**MOUSE
+*/
+# define FDF_LEFT_BUTTON	1
+# define FDF_RIGHT_BUTTON	2
+# define FDF_MIDDLE_BUTTON	3
+# define FDF_SCROLL_UP		4
+# define FDF_SCROLL_DOWN	5
+# define FDF_SCROLL_LEFT	6
+# define FDF_SCROLL_RIGHT	7
 
 typedef struct		s_cfg_image
 {
@@ -138,5 +160,15 @@ t_listfdf			*fdf_read_file(const char *filename);
 */
 enum e_err			fdf_parsing_map(t_listfdf *beg, t_map *map);
 void				fdf_create_map(t_listfdf *beg, t_map *map);
+
+/*
+**WINDOW
+*/
+void				fdf_work_window(t_map *map);
+
+/*
+**EVENTS
+*/
+void				fdf_events(struct s_ptr *mlx_ptr);
 
 #endif
