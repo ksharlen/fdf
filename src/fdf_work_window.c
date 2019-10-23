@@ -6,13 +6,13 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 22:17:12 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/23 23:15:00 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/23 23:50:57 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static t_coord	define_center(size_t max_x_map, size_t max_y_map)
+static t_coord	define_center(t_pixel elem)
 {
 	t_coord	center_win;
 	t_coord	center_img;
@@ -20,8 +20,8 @@ static t_coord	define_center(size_t max_x_map, size_t max_y_map)
 
 	center_win.x = WIN_X / 2;
 	center_win.y = WIN_Y / 2;
-	center_img.x = max_x_map / 2;
-	center_img.y = max_y_map / 2;
+	center_img.x = elem.x / 2;
+	center_img.y = elem.y / 2;
 	begin_img_centr.x = center_win.x - center_img.x;
 	begin_img_centr.y = center_win.y - center_img.y;
 	return (begin_img_centr);
@@ -29,24 +29,25 @@ static t_coord	define_center(size_t max_x_map, size_t max_y_map)
 
 static void		fdf_map_to_img(t_map *map, int *img)
 {
+	int x;
+	int y;
 	size_t	i;
-	size_t	j;
 	t_coord	coor;
+	size_t	center;
 
 	i = 0;
-	map->scale = 50;
+	map->scale = 200;//!TEST
 	fdf_scale_map(map);
-	coor = define_center(MAX_X, MAX_Y);//!тут будет неправильно
-	img = img + ((WIN_X) * coor.y + coor.x);
-	while (i < MAX_Y)
+	coor = define_center(MAP[MAX_X * MAX_Y - 1]);
+	center = WIN_X * coor.y + coor.x;
+	while (i < MAX_X * MAX_Y)
 	{
-		j = 0;
-		while (j < MAX_X)
-		{
-			*(img + (WIN_X) * i + j) = MAP[i * MAX_X + j].color;
-			++j;
-		}
+		x = MAP->x;
+		y = MAP->y;
+		if ((x < WIN_X) && (y < (WIN_Y) && (x > 0 && y > 0)) && center > 0 && ((center + WIN_X * y + x) > 0 && (center + WIN_X * y + x) < WIN_X * WIN_Y))
+			*((img + center) + WIN_X * y + x) = MAP->color;
 		++i;
+		++MAP;
 	}
 }
 
