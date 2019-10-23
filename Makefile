@@ -6,7 +6,7 @@
 #    By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/18 08:27:12 by ksharlen          #+#    #+#              #
-#    Updated: 2019/10/23 22:31:55 by ksharlen         ###   ########.fr        #
+#    Updated: 2019/10/23 22:52:00 by ksharlen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,8 @@ SRCS				:= main.c\
 							fdf_create_map.c\
 							fdf_work_window.c\
 							fdf_errors.c\
-							fdf_events.c
+							fdf_events.c\
+							fdf_scale_map.c
 
 OBJS				:= $(SRCS:.c=.o)
 DIRS_INCLUDE		:= $(DIR_INCLUDE_LIBFT) $(DIR_INCLUDE_FDF) $(DIR_INCLUDE_MLX) $(DIR_INCLUDE_LINAL)

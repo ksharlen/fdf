@@ -6,15 +6,18 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 22:50:14 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/23 22:32:57 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/23 23:05:39 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static const char *fill_elem(const char *file_line, t_pixel *elem)
+static const char	*fill_elem(const char *file_line,
+								t_pixel *elem, size_t x, size_t y)
 {
-	elem->color = DFLT_COLOR;
+	elem->x = x;
+	elem->y = y;
+	elem->color = FDF_DFLT_COLOR;
 	elem->z = ft_atoi_base_ptr(file_line, DECIMAL, (char **)&file_line);
 	if (file_line && (*file_line == ','))
 	{
@@ -25,19 +28,19 @@ static const char *fill_elem(const char *file_line, t_pixel *elem)
 	return (file_line);
 }
 
-static void fill_line(const size_t i, const char *curr_line, t_map *map)
+static void			fill_line(const size_t i, const char *curr_line, t_map *map)
 {
 	size_t	j;
 
 	j = 0;
 	while (*curr_line && j < MAX_X)
 	{
-		curr_line = fill_elem(curr_line, MAP + MAX_X * i + j);
+		curr_line = fill_elem(curr_line, MAP + MAX_X * i + j, j, i);
 		++j;
 	}
 }
 
-static void	fill_map(const t_listfdf *beg, t_map *map)
+static void			fill_map(const t_listfdf *beg, t_map *map)
 {
 	size_t	i;
 
@@ -50,7 +53,7 @@ static void	fill_map(const t_listfdf *beg, t_map *map)
 	}
 }
 
-void		fdf_create_map(t_listfdf *beg, t_map *map)
+void				fdf_create_map(t_listfdf *beg, t_map *map)
 {
 	size_t	size_map;
 

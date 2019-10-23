@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:17:24 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/23 22:00:09 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/23 23:14:52 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,24 @@
 # define FDF_TITTLE	"fdf"
 # define WIN_X		1600
 # define WIN_Y 		900
-# define DFLT_COLOR	0x00ff00
+# define FDF_DFLT_COLOR	0x00ff00
+# define FDF_DFLT_SCALE	1
 # define FDF_MAP	argv[1]
 # define PART_STR	","
+
+/*
+**FDF_ALIAS
+*/
 # define MAP map->map
 # define MAX_X map->max_x
 # define MAX_Y map->max_y
 # define MLX_PTR mlx_ptr.mlx_ptr
 # define MLX_WIN mlx_ptr.mlx_win
 # define MLX_IMG mlx_ptr.mlx_image
+# define FDF_CFG_IMG cfg_image
+# define FDF_BPP FDF_CFG_IMG.bits_per_pixel
+# define FDF_SL FDF_CFG_IMG.size_line
+# define FDF_ENDI FDF_CFG_IMG.endian
 # define FDF_CHK_FILE NULL
 
 /*
@@ -196,5 +205,10 @@ void				fdf_events(struct s_ptr *mlx_ptr);
 */
 void				fdf_err_str(const int err);
 void				fdf_err_ext(const int err);
+
+/*
+**WORK_MAP
+*/
+void				fdf_scale_map(t_map *map);
 
 #endif

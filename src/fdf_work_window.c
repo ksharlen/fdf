@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 22:17:12 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/23 22:31:51 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/23 23:15:00 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ static void		fdf_map_to_img(t_map *map, int *img)
 	t_coord	coor;
 
 	i = 0;
-	coor = define_center(MAX_X, MAX_Y);
+	map->scale = 50;
+	fdf_scale_map(map);
+	coor = define_center(MAX_X, MAX_Y);//!тут будет неправильно
 	img = img + ((WIN_X) * coor.y + coor.x);
 	while (i < MAX_Y)
 	{
@@ -59,10 +61,8 @@ void			fdf_work_window(t_map *map) //!Может быть будет еще чт
 					PROG_NAME), FDF_E_WIN);
 	FDF_CHK_NULL_PTR(MLX_IMG = mlx_new_image(MLX_PTR, WIN_X, WIN_Y),
 					FDF_E_IMG);
-	image = (int *)mlx_get_data_addr(MLX_IMG, &cfg_image.bits_per_pixel, &cfg_image.size_line, &cfg_image.endian);
+	image = (int *)mlx_get_data_addr(MLX_IMG, &FDF_BPP, &FDF_SL, &FDF_ENDI);
 	fdf_map_to_img(map, image);
 	mlx_put_image_to_window(MLX_PTR, MLX_WIN, MLX_IMG, 0, 0);
 	fdf_events(&mlx_ptr);
 }
-	// put_map_to_img(map, image);
-	// fdf_create_mash(image, vec);

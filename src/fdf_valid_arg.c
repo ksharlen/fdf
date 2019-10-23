@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 18:58:21 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/17 18:30:30 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/23 23:08:05 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int			valid_file(const char *filename)
 
 int					fdf_valid_arg(const int argc, char *const argv[])
 {
-	enum e_err			err;
+	enum e_err	err;
 
 	err = FAILURE;
 	if (argc == 1)
