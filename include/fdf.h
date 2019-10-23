@@ -6,9 +6,11 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:17:24 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/23 20:51:38 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/23 22:00:09 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+//!NEED REFACT HEADERS
 
 #ifndef FDF_H
 # define FDF_H
@@ -25,8 +27,8 @@
 # define P_N PROG_NAME
 
 # define FDF_TITTLE	"fdf"
-# define WIN_X		2560
-# define WIN_Y 		1440
+# define WIN_X		1600
+# define WIN_Y 		900
 # define DFLT_COLOR	0x00ff00
 # define FDF_MAP	argv[1]
 # define PART_STR	","
@@ -63,7 +65,6 @@
 # define FDF_NOT_VALID		"File doesn't exist or Permission denied"
 # define FDF_BAD_MAP		"Bad map"
 # define FORM_ERR			"%v%s: %s\n"
-# define FDF_CHK_ERR_EXT(val, err, name) if ((val) == F) 
 # define FDF_PRINT_ERR(err) ft_printf(FORM_ERR, STDERR_FILENO, PROG_NAME, err)
 # define FDF_PRINT_ERR_EXT(err) {FDF_PRINT_ERR(err); exit(EXIT_FAILURE);}
 
@@ -114,6 +115,12 @@ typedef struct		s_cfg_image
 	int	size_line;
 	int	endian;
 }					t_cfg_image;
+
+typedef struct		s_coord
+{
+	int x;
+	int y;
+}				t_coord;
 
 typedef struct		s_pixel
 {

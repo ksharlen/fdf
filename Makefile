@@ -6,7 +6,7 @@
 #    By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/18 08:27:12 by ksharlen          #+#    #+#              #
-#    Updated: 2019/10/23 20:29:24 by ksharlen         ###   ########.fr        #
+#    Updated: 2019/10/23 22:31:55 by ksharlen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ SRCS				:= main.c\
 							fdf_parsing_map.c\
 							fdf_create_map.c\
 							fdf_work_window.c\
+							fdf_errors.c\
 							fdf_events.c
 
 OBJS				:= $(SRCS:.c=.o)
@@ -47,7 +48,7 @@ INCLUDES			:= $(INCLUDE_FDF) $(INCLUDE_LIBFT) $(INCLUDE_MLX)
 FRAMEWORKS			:= -framework OpenGL -framework AppKit
 
 CC					:= gcc
-# CFLAGS				:= -g -Wall -Wextra -Werror
+CFLAGS				:= -g -Wall -Wextra -Werror
 OFLAGS				:= -c
 IFLAGS				:= -I
 NFLAGS				:= -o

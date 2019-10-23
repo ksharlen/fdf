@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 19:48:23 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/23 19:43:29 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/23 22:34:08 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,9 @@ static void		valid_map(t_listfdf *beg)
 
 enum e_err			fdf_parsing_map(t_listfdf *beg, t_map *map)
 {
-	size_t		size_line;
-
 	valid_map(beg);
 	FDF_GET_MAX_X(MAX_X, beg->line);
 	FDF_GET_MAX_Y(MAX_Y, beg);
 	fdf_create_map(beg, map);
-	//!Удалить beg
-	// get_max_xy(beg, &map->max_x, &map->max_y);
-	// printf("max_x: %ld	max_y: %ld\n", map->max_x, map->max_y);
-	// fdf_new_create_map(beg, map);
-	// fdf_create_map(beg, map);
 	return (SUCCESS);
 }
