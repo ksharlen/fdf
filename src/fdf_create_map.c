@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 22:50:14 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/18 18:43:32 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/23 19:43:41 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,12 +84,11 @@ static void	fill_map(const t_listfdf *beg, struct s_map *map)
 	}
 }
 
-void		fdf_create_map(t_listfdf *beg, struct s_map *map)
+void		fdf_create_map(t_listfdf *beg, t_map *map)
 {
-	MAX_X = ft_num_words(beg->line, PART_STR);
-	MAX_Y = list_size(beg);
-	CHK_NULL_PTR(MAP = (t_map *)ft_memalloc(sizeof(t_map) *
-		(MAX_X * MAX_Y)), E_MALLOC, P_N);
-	fill_map(beg, map);
-	print_map(map);
+	
+	// CHK_NULL_PTR(MAP = (t_map *)ft_memalloc(sizeof(t_map) *
+	// 	(MAX_X * MAX_Y)), E_MALLOC, P_N);
+	// fill_map(beg, map);
+	// print_map(map);
 }

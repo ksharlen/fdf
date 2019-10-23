@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:17:24 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/18 18:33:44 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/23 19:41:47 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,12 @@
 # define FDF_CHK_FILE NULL
 
 /*
+**MACRO
+*/
+# define FDF_GET_MAX_X(val, line) ((val) = ft_num_words((line), (PART_STR)))
+# define FDF_GET_MAX_Y(val, beg) (val) = (list_size(beg))
+
+/*
 **ERRORS_FDF
 */
 # define FDF_NO_ARG			"No arguments"
@@ -67,8 +73,6 @@
 # define FDF_GET_HEIGHT_L(val)			(((val) >> POS_H))
 # define FDF_SET_HC_L(v, h, c) FDF_SET_HEIGHT_L(v, h) | FDF_SET_COLOR_L(v, c)
 
-typedef intmax_t	t_map;
-
 typedef struct		s_cfg_image
 {
 	int	bits_per_pixel;
@@ -91,13 +95,13 @@ struct				s_ptr
 	void		*mlx_image;
 };
 
-struct				s_map
+typedef struct		s_map
 {
-	t_map		*map;
+	t_pixel		*map;
 	size_t		max_x;
 	size_t		max_y;
 	int			scale;
-};
+}					t_map;
 
 typedef struct		s_listfdf
 {
@@ -132,7 +136,7 @@ t_listfdf			*fdf_read_file(const char *filename);
 /*
 **WORK_MAP
 */
-enum e_err			fdf_parsing_map(t_listfdf *beg, struct s_map *map);
-void				fdf_create_map(t_listfdf *beg, struct s_map *map);
+enum e_err			fdf_parsing_map(t_listfdf *beg, t_map *map);
+void				fdf_create_map(t_listfdf *beg, t_map *map);
 
 #endif
