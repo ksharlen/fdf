@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 22:41:37 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/23 23:06:25 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/25 00:09:38 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,18 @@
 
 #undef MLX_PTR
 #undef MLX_WIN
-#define MLX_PTR	mlx_ptr->mlx_ptr
-#define MLX_WIN mlx_ptr->mlx_win
+#define MLX_PTR	mlx->mlx_ptr.mlx_ptr
+#define MLX_WIN mlx->mlx_ptr.mlx_win
 
-static int	key_press(int key, void *param)
+static int	key_press(int key, t_mlx *mlx)
 {
-	P_UNUSED(param);
 	if (key == FDF_ESC)
 		exit(EXIT_SUCCESS);
+	else if (key == FDF_NUM_KEY_PLS)
+	{
+		mlx->map->scale *= FDF_ZOOM_IN;
+		printf("scale: %f\n", mlx->map->scale);
+	}
 	else if (key == FDF_LEFT_ARROW)
 		;
 	else if (key == FDF_RIGHT_ARROW)
@@ -30,6 +34,7 @@ static int	key_press(int key, void *param)
 		;
 	else if (key == FDF_DOWN_ARROW)
 		;
+	fdf_map_to_img(mlx->map, mlx->img);
 	return (SUCCESS);
 }
 
@@ -70,9 +75,13 @@ static int	mouse_mov(int x, int y, void *param)
 	return (SUCCESS);
 }
 
-void		fdf_events(struct s_ptr *mlx_ptr)
+void		fdf_events(t_mlx *mlx)
 {
-	mlx_hook(MLX_WIN, FDF_KEY_PRESS, FDF_NOT_WORK, key_press, NULL);
+	printf("here\n");
+	printf("scale: %f\n", mlx->map->scale);
+	exit(EXIT_FAILURE);
+
+	mlx_hook(MLX_WIN, FDF_KEY_PRESS, FDF_NOT_WORK, key_press, mlx);
 	mlx_hook(MLX_WIN, FDF_RED_BUTTON, FDF_NOT_WORK, red_button, NULL);
 	mlx_hook(MLX_WIN, FDF_MOUSE_BUTTON_PRESS, FDF_NOT_WORK, mouse_press, NULL);
 	mlx_hook(MLX_WIN, FDF_MOUSE_MOVEMENT, FDF_NOT_WORK, mouse_mov, NULL);

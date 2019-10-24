@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 20:44:16 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/23 23:06:13 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/24 23:31:14 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ static char *g_fdf_errors[] = {
 	"window_error",
 	"image_error",
 	"xpm_image_error",
-	"xpm_file_to_image_error"
+	"xpm_file_to_image_error",
+	"init_error"
 };
 
 void	fdf_err_str(const int err)

@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:17:24 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/24 20:50:04 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/25 00:07:49 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,10 @@
 # define FDF_TITTLE	"fdf"
 # define WIN_X		1600
 # define WIN_Y 		900
+// # define WIN_X	200
+// # define WIN_Y	200
 # define FDF_DFLT_COLOR	0x00ff00
-# define FDF_DFLT_SCALE	1
+# define FDF_DFLT_SCALE	1.0
 # define FDF_MAP	argv[1]
 # define PART_STR	","
 
@@ -47,13 +49,14 @@
 # define MAP map->map
 # define MAX_X map->max_x
 # define MAX_Y map->max_y
-# define MLX_PTR mlx_ptr.mlx_ptr
-# define MLX_WIN mlx_ptr.mlx_win
-# define MLX_IMG mlx_ptr.mlx_image
+# define MLX_PTR mlx.mlx_ptr.mlx_ptr
+# define MLX_WIN mlx.mlx_ptr.mlx_win
+# define MLX_P_IMG mlx.mlx_ptr.mlx_image
+# define MLX_IMG	mlx.img
 # define FDF_CFG_IMG cfg_image
-# define FDF_BPP FDF_CFG_IMG.bits_per_pixel
-# define FDF_SL FDF_CFG_IMG.size_line
-# define FDF_ENDI FDF_CFG_IMG.endian
+# define FDF_BPP mlx.FDF_CFG_IMG.bits_per_pixel
+# define FDF_SL mlx.FDF_CFG_IMG.size_line
+# define FDF_ENDI mlx.FDF_CFG_IMG.endian
 # define FDF_LAST_ELEM_MAP MAX_X * MAX_Y - 1
 # define FDF_CHK_FILE NULL
 
@@ -70,6 +73,7 @@
 # define FDF_E_IMG				1
 # define FDF_E_XPM_IMG			2
 # define FDF_E_XPM_FILE_IMG		3
+# define FDF_E_INIT				4
 
 /*
 **ERRORS_FDF
@@ -159,8 +163,18 @@ typedef struct		s_map
 	t_pixel		*map;
 	size_t		max_x;
 	size_t		max_y;
-	int			scale;
+	float		scale;
 }					t_map;
+
+typedef struct		s_mlx
+{
+	t_map				*map;
+	struct s_ptr		mlx_ptr;
+	struct s_cfg_image	cfg_image;
+	int					*img;
+}					t_mlx;
+
+
 
 typedef struct		s_listfdf
 {
@@ -173,6 +187,12 @@ struct				s_gnl
 	char		*line;
 	int			ret;
 };
+
+// struct				s_event
+// {
+// 	struct s_ptr	mlx_ptr;
+// 	t_map			*map;
+// }
 
 /*
 **VALID
@@ -197,6 +217,7 @@ t_listfdf			*fdf_read_file(const char *filename);
 */
 enum e_err			fdf_parsing_map(t_listfdf *beg, t_map *map);
 void				fdf_create_map(t_listfdf *beg, t_map *map);
+void				fdf_map_to_img(t_map *map, int *img);
 
 /*
 **WINDOW
@@ -206,7 +227,7 @@ void				fdf_work_window(t_map *map);
 /*
 **EVENTS
 */
-void				fdf_events(struct s_ptr *mlx_ptr);
+void				fdf_events(t_mlx *mlx);
 
 /*
 **ERRORS

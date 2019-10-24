@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 19:48:23 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/24 20:50:16 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/24 22:29:53 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ enum e_err		fdf_parsing_map(t_listfdf *beg, t_map *map)
 	FDF_GET_MAX_X(MAX_X, beg->line);
 	FDF_GET_MAX_Y(MAX_Y, beg);
 	fdf_create_map(beg, map);
-	fdf_fit_screen_map(map);
 	map->scale = FDF_DFLT_SCALE;
+	fdf_fit_screen_map(map);
 	return (SUCCESS);
 }
