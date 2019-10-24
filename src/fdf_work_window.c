@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 22:17:12 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/24 16:36:36 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/24 17:51:13 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,35 +16,69 @@ static t_coord	define_center(t_pixel elem)
 {
 	t_coord	center_win;
 	t_coord	center_img;
-	t_coord begin_img_centr;
+	t_coord begin_img_center;
 
 	center_win.x = WIN_X / 2;
 	center_win.y = WIN_Y / 2;
 	center_img.x = elem.x / 2;
 	center_img.y = elem.y / 2;
-	begin_img_centr.x = center_win.x - center_img.x;
-	begin_img_centr.y = center_win.y - center_img.y;
-	return (begin_img_centr);
+	if (elem.y > WIN_Y && elem.x < WIN_X)
+	{
+		begin_img_center.x = center_win.x - center_img.x;
+		begin_img_center.y = center_win.y - center_img.y;
+	}
+	else if (elem.x > WIN_X && elem.y < WIN_Y)
+	{
+		begin_img_center.x = center_img.x - center_win.x;
+		begin_img_center.y = center_win.y - center_img.y;
+	}
+	else if (elem.x > WIN_X && elem.y > WIN_Y)
+	{
+		begin_img_center.x = center_img.x - center_win.x;
+		begin_img_center.y = center_img.y - center_win.y;
+	}
+	else
+	{
+		begin_img_center.x = center_win.x - center_img.x;
+		begin_img_center.y = center_win.y - center_img.y;
+	}
+	// if (WIN_X > elem.x || WIN_Y > elem.y)
+	// {
+	// 	begin_img_centr.x = center_win.x - center_img.x;
+	// 	begin_img_centr.y = center_win.y - center_img.y;
+	// }
+	// else
+	// {
+	// 	begin_img_centr.x = center_img.x - center_win.x;
+	// 	begin_img_centr.y = center_img.y - center_win.y;
+	// }
+	printf("begin_img_center.x: %ld\n", begin_img_center.x);
+	printf("begin_img_center.y: %ld\n", begin_img_center.y);
+	return (begin_img_center);
 }
 
 static void		fdf_map_to_img(t_map *map, int *img)
 {
+	int max_x;
 	int x;
 	int y;
 	size_t	i;
 	t_coord	coor;
-	long	center;
+	ssize_t	center;
 
 	i = 0;
-	map->scale = 80;//!TEST
+	map->scale = 3;//!TEST
 	fdf_scale_map(map);
+	max_x = MAP[MAX_X * MAX_Y - 1].x;
 	coor = define_center(MAP[MAX_X * MAX_Y - 1]);
-	center = WIN_X * coor.y + coor.x;
+	// if (max_x < WIN_X)
+	printf("max_x: %d\nmax_y: %d\n", max_x, MAP[MAX_X * MAX_Y - 1].y);
+	center = (max_x > WIN_X ? max_x : WIN_X) * coor.y + coor.x;
 	while (i < MAX_X * MAX_Y)
 	{
 		x = MAP->x;
 		y = MAP->y;
-		if ((x < WIN_X) && (y < (WIN_Y) && (x >= 0 && y >= 0)) && center > 0 && ((center + WIN_X * y + x) > 0 && (center + WIN_X * y + x) < WIN_X * WIN_Y))
+		if ((x < WIN_X) && (y < (WIN_Y) && (x >= 0 && y >= 0)) && ((center + WIN_X * y + x) > 0 && (center + WIN_X * y + x) < WIN_X * WIN_Y))
 			*((img + center) + WIN_X * y + x) = MAP->color;
 		++i;
 		++MAP;

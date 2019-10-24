@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:17:24 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/23 23:14:52 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/24 16:42:20 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,8 +127,8 @@ typedef struct		s_cfg_image
 
 typedef struct		s_coord
 {
-	int x;
-	int y;
+	ssize_t x;
+	ssize_t y;
 }				t_coord;
 
 typedef struct		s_pixel
