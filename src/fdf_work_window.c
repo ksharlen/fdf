@@ -6,84 +6,51 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 22:17:12 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/24 19:24:08 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/24 20:55:32 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static t_coord	define_center(t_pixel elem)
+static int		chek_pix_in_to_win(t_pixel *elem)
 {
-	t_coord	center_win;
-	t_coord	center_img;
-	t_coord begin_img_center;
-
-	center_win.x = WIN_X / 2;
-	center_win.y = WIN_Y / 2;
-	center_img.x = elem.x / 2;
-	center_img.y = elem.y / 2;
-	if (elem.y > WIN_Y && elem.x < WIN_X)
-	{
-		printf("here\n");
-		begin_img_center.x = center_win.x - center_img.x;
-		begin_img_center.y = center_img.y - center_win.y;
-	}
-	else if (elem.x > WIN_X && elem.y < WIN_Y)
-	{
-		begin_img_center.x = center_img.x - center_win.x;
-		begin_img_center.y = center_win.y - center_img.y;
-	}
-	else if (elem.x > WIN_X && elem.y > WIN_Y)
-	{
-		begin_img_center.x = center_img.x - center_win.x;
-		begin_img_center.y = center_img.y - center_win.y;
-	}
+	if ((elem->x < WIN_X) && (elem->y < WIN_Y) && (elem->x >= 0) && elem->y >= 0)
+		return (SUCCESS);
 	else
-	{
-		begin_img_center.x = center_win.x - center_img.x;
-		begin_img_center.y = center_win.y - center_img.y;
-	}
-	// if (WIN_X > elem.x || WIN_Y > elem.y)
-	// {
-	// 	begin_img_centr.x = center_win.x - center_img.x;
-	// 	begin_img_centr.y = center_win.y - center_img.y;
-	// }
-	// else
-	// {
-	// 	begin_img_centr.x = center_img.x - center_win.x;
-	// 	begin_img_centr.y = center_img.y - center_win.y;
-	// }
-	printf("begin_img_center.x: %ld\n", begin_img_center.x);
-	printf("begin_img_center.y: %ld\n", begin_img_center.y);
-	return (begin_img_center);
+		return (FAILURE);
 }
 
 static void		fdf_map_to_img(t_map *map, int *img)
 {
-	int max_x;
-	int x;
-	int y;
+	t_coord	curr_pix;
 	size_t	i;
-	t_coord	coor;
-	ssize_t	center;
 
 	i = 0;
-	map->scale = 2;//!TEST
-	fdf_scale_map(map);
-	max_x = MAP[MAX_X * MAX_Y - 1].x;
-	coor = define_center(MAP[MAX_X * MAX_Y - 1]);
-	// if (max_x < WIN_X)
-	printf("max_x: %d\nmax_y: %d\n", max_x, MAP[MAX_X * MAX_Y - 1].y);
-	center = (max_x > WIN_X ? max_x : WIN_X) * coor.y + coor.x;
-	while (i < MAX_X * MAX_Y)
+	while (i < FDF_LAST_ELEM_MAP)
 	{
-		x = MAP->x;
-		y = MAP->y;
-		if (((x < WIN_X) && (y < WIN_Y)) && (x >= 0 && y >= 0) && ((center + WIN_X * y + x) > 0) && (center + WIN_X * y + x) < WIN_X * WIN_Y)
-			*((img + center) + WIN_X * y + x) = MAP->color;
+		curr_pix.x = MAP->x;
+		curr_pix.y = MAP->y;
+		if (check_pix_in_to_win(MAP))
+			*(img + WIN_X * curr_pix.y + curr_pix.x) = MAP->color;
 		++i;
 		++MAP;
 	}
+	// int x;
+	// int y;
+	// size_t	i;
+
+	// i = 0;
+	// map->scale = 2;//!TEST
+	// fdf_scale_map(map);
+	// while (i < MAX_X * MAX_Y)
+	// {
+	// 	x = MAP->x;
+	// 	y = MAP->y;
+	// 	if (((x < WIN_X) && (y < WIN_Y)) && (x >= 0 && y >= 0) && ((center + WIN_X * y + x) > 0) && (center + WIN_X * y + x) < WIN_X * WIN_Y)
+	// 		*((img + center) + WIN_X * y + x) = MAP->color;
+	// 	++i;
+	// 	++MAP;
+	// }
 }
 
 void			fdf_work_window(t_map *map) //!Может быть будет еще что-то принимать

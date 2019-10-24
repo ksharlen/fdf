@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:17:24 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/24 16:42:20 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/24 20:50:04 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <math.h>
 
 # include "fdf_keymap.h"
 # include "libft.h"
@@ -35,6 +36,12 @@
 # define PART_STR	","
 
 /*
+**ZOOM
+*/
+# define FDF_ZOOM_OUT	0.8
+# define FDF_ZOOM_IN	1.2
+
+/*
 **FDF_ALIAS
 */
 # define MAP map->map
@@ -47,6 +54,7 @@
 # define FDF_BPP FDF_CFG_IMG.bits_per_pixel
 # define FDF_SL FDF_CFG_IMG.size_line
 # define FDF_ENDI FDF_CFG_IMG.endian
+# define FDF_LAST_ELEM_MAP MAX_X * MAX_Y - 1
 # define FDF_CHK_FILE NULL
 
 /*
@@ -209,6 +217,10 @@ void				fdf_err_ext(const int err);
 /*
 **WORK_MAP
 */
+void				fdf_fit_screen_map(t_map *map);
 void				fdf_scale_map(t_map *map);
+void				fdf_zooming(t_map *map, const float zoom);
+void				fdf_out_window(t_map *map);
+void				fdf_in_window(t_map *map);
 
 #endif
