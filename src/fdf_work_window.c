@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 22:17:12 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/24 17:51:13 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/24 19:24:08 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@ static t_coord	define_center(t_pixel elem)
 	center_img.y = elem.y / 2;
 	if (elem.y > WIN_Y && elem.x < WIN_X)
 	{
+		printf("here\n");
 		begin_img_center.x = center_win.x - center_img.x;
-		begin_img_center.y = center_win.y - center_img.y;
+		begin_img_center.y = center_img.y - center_win.y;
 	}
 	else if (elem.x > WIN_X && elem.y < WIN_Y)
 	{
@@ -67,7 +68,7 @@ static void		fdf_map_to_img(t_map *map, int *img)
 	ssize_t	center;
 
 	i = 0;
-	map->scale = 3;//!TEST
+	map->scale = 2;//!TEST
 	fdf_scale_map(map);
 	max_x = MAP[MAX_X * MAX_Y - 1].x;
 	coor = define_center(MAP[MAX_X * MAX_Y - 1]);
@@ -78,7 +79,7 @@ static void		fdf_map_to_img(t_map *map, int *img)
 	{
 		x = MAP->x;
 		y = MAP->y;
-		if ((x < WIN_X) && (y < (WIN_Y) && (x >= 0 && y >= 0)) && ((center + WIN_X * y + x) > 0 && (center + WIN_X * y + x) < WIN_X * WIN_Y))
+		if (((x < WIN_X) && (y < WIN_Y)) && (x >= 0 && y >= 0) && ((center + WIN_X * y + x) > 0) && (center + WIN_X * y + x) < WIN_X * WIN_Y)
 			*((img + center) + WIN_X * y + x) = MAP->color;
 		++i;
 		++MAP;
