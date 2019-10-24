@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 22:17:12 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/24 16:36:03 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/24 16:36:36 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void		fdf_map_to_img(t_map *map, int *img)
 	long	center;
 
 	i = 0;
-	map->scale = 70;//!TEST
+	map->scale = 80;//!TEST
 	fdf_scale_map(map);
 	coor = define_center(MAP[MAX_X * MAX_Y - 1]);
 	center = WIN_X * coor.y + coor.x;
