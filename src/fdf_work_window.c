@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 22:17:12 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/23 23:50:57 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/24 16:36:03 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ static void		fdf_map_to_img(t_map *map, int *img)
 	int y;
 	size_t	i;
 	t_coord	coor;
-	size_t	center;
+	long	center;
 
 	i = 0;
-	map->scale = 200;//!TEST
+	map->scale = 70;//!TEST
 	fdf_scale_map(map);
 	coor = define_center(MAP[MAX_X * MAX_Y - 1]);
 	center = WIN_X * coor.y + coor.x;
@@ -44,7 +44,7 @@ static void		fdf_map_to_img(t_map *map, int *img)
 	{
 		x = MAP->x;
 		y = MAP->y;
-		if ((x < WIN_X) && (y < (WIN_Y) && (x > 0 && y > 0)) && center > 0 && ((center + WIN_X * y + x) > 0 && (center + WIN_X * y + x) < WIN_X * WIN_Y))
+		if ((x < WIN_X) && (y < (WIN_Y) && (x >= 0 && y >= 0)) && center > 0 && ((center + WIN_X * y + x) > 0 && (center + WIN_X * y + x) < WIN_X * WIN_Y))
 			*((img + center) + WIN_X * y + x) = MAP->color;
 		++i;
 		++MAP;
