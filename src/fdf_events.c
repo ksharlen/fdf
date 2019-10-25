@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 22:41:37 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/25 17:58:08 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/25 18:52:17 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,9 @@ static int	key_press(int key, t_mlx *mlx)
 	if (key == FDF_ESC)
 		exit(EXIT_SUCCESS);
 	else if (key == FDF_NUM_KEY_PLS)
-	{
 		mlx->map.scale *= FDF_ZOOM_IN;
-		printf("scale: %f\n", mlx->map.scale);
-	}
+	else if (key == FDF_NUM_KEY_SUB)
+		mlx->map.scale *= FDF_ZOOM_OUT;
 	else if (key == FDF_LEFT_ARROW)
 		;
 	else if (key == FDF_RIGHT_ARROW)
@@ -35,10 +34,6 @@ static int	key_press(int key, t_mlx *mlx)
 	else if (key == FDF_DOWN_ARROW)
 		;
 	fdf_work_frame(mlx);
-	// mlx_clear_window(MLX_PTR, MLX_WIN);
-	// ft_bzero(mlx->img, (WIN_X * WIN_Y) * 4);
-	// fdf_map_to_img(&mlx->map, mlx->img);
-	// mlx_put_image_to_window(MLX_PTR, MLX_WIN, MLX_P_IMG, 0, 0);
 	return (SUCCESS);
 }
 

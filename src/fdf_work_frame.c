@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 22:44:28 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/25 17:52:06 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/25 18:50:27 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void			fdf_map_to_img(t_map *map, int *img)
 	i = 0;
 	while (i < MAX_X * MAX_Y)
 	{
-		curr_pix.x = round(MAP[i].x * map->scale);
-		curr_pix.y = round(MAP[i].y * map->scale);
+		curr_pix.x = round(MAP[i].x * map->scale + WIN_X / 2);
+		curr_pix.y = round(MAP[i].y * map->scale + WIN_Y / 2);
 		if (check_pix_in_to_win(&curr_pix) == SUCCESS)
 			*(img + WIN_X * curr_pix.y + curr_pix.x) = MAP[i].color;
 		++i;

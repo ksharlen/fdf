@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 19:48:23 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/25 18:10:45 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/25 18:50:05 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,22 @@ static void		fdf_map_align(t_map *map)
 {
 	t_coord		center_win;
 	t_coord		center_img;
+	size_t		i;
 
 	center_win.x = FDF_MIDDLE(WIN_X);
 	center_win.y = FDF_MIDDLE(WIN_Y);
 	center_img.x = FDF_MIDDLE(MAP[FDF_LAST_ELEM_MAP].x);
 	center_img.y = FDF_MIDDLE(MAP[FDF_LAST_ELEM_MAP].y);
-	exit(EXIT_FAILURE);
-	// define_center_win_img(&center_win, );
+	i = 0;
+	while (i < map->max_x * map->max_y)
+	{
+	// printf("here\n");
+		MAP[i].x -= center_img.x;
+		MAP[i].y -= center_img.y;
+		// MAP[i].x += (center_win.x);
+		// MAP[i].y += (center_win.y);
+		++i;
+	}
 }
 
 enum e_err		fdf_parsing_map(t_listfdf *beg, t_map *map)
