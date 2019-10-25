@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:17:24 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/25 18:07:54 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/25 19:50:13 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@
 // # define WIN_Y	200
 # define FDF_DFLT_COLOR	0x00ff00
 # define FDF_DFLT_SCALE	1.0
+# define FDF_DFLT_SHIFT_X ((WIN_X) / 2)
+# define FDF_DFLT_SHIFT_Y ((WIN_Y) / 2)
 # define FDF_MAP	argv[1]
 # define PART_STR	","
 
@@ -42,6 +44,8 @@
 */
 # define FDF_ZOOM_OUT	0.8
 # define FDF_ZOOM_IN	1.2
+
+# define FDF_SHIFT		13
 
 /*
 **FDF_ALIAS
@@ -59,6 +63,28 @@
 # define FDF_ENDI mlx->FDF_CFG_IMG.endian
 # define FDF_LAST_ELEM_MAP MAX_X * MAX_Y - 1
 # define FDF_CHK_FILE NULL
+
+/*
+**KEY_MAP_FOR_FDF
+*/
+# define FDF_ESC KEY_ESC
+# define FDF_NUM_KEY_PLS KEY_NUM_KEY_PLS
+# define FDF_NUM_KEY_SUB KEY_NUM_KEY_SUB
+# define FDF_LEFT_ARROW KEY_LEFT_ARROW
+# define FDF_RIGHT_ARROW KEY_RIGHT_ARROW
+# define FDF_UP_ARROW KEY_UP_ARROW
+# define FDF_DOWN_ARROW KEY_DOWN_ARROW
+
+/*
+**MOUSE
+*/
+# define FDF_LEFT_BUTTON	1
+# define FDF_RIGHT_BUTTON	2
+# define FDF_MIDDLE_BUTTON	3
+# define FDF_SCROLL_UP		4
+# define FDF_SCROLL_DOWN	5
+# define FDF_SCROLL_LEFT	6
+# define FDF_SCROLL_RIGHT	7
 
 /*
 **MACRO
@@ -120,17 +146,6 @@
 # define FDF_EXPOSE					12
 # define FDF_RED_BUTTON				17
 
-/*
-**MOUSE
-*/
-# define FDF_LEFT_BUTTON	1
-# define FDF_RIGHT_BUTTON	2
-# define FDF_MIDDLE_BUTTON	3
-# define FDF_SCROLL_UP		4
-# define FDF_SCROLL_DOWN	5
-# define FDF_SCROLL_LEFT	6
-# define FDF_SCROLL_RIGHT	7
-
 typedef struct		s_cfg_image
 {
 	int	bits_per_pixel;
@@ -165,6 +180,8 @@ typedef struct		s_map
 	size_t		max_x;
 	size_t		max_y;
 	float		scale;
+	int32_t		shift_x;
+	int32_t		shift_y;
 }					t_map;
 
 typedef struct		s_mlx

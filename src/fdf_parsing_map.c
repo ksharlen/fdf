@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 19:48:23 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/25 18:50:05 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/25 18:58:15 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ enum e_err		fdf_parsing_map(t_listfdf *beg, t_map *map)
 	FDF_GET_MAX_Y(MAX_Y, beg);
 	fdf_create_map(beg, map);
 	map->scale = FDF_DFLT_SCALE;
+	map->shift_x = FDF_DFLT_SHIFT_X;
+	map->shift_y = FDF_DFLT_SHIFT_Y;
 	fdf_fit_screen_map(map);
 	fdf_map_align(map);
 	return (SUCCESS);
