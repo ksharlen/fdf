@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:17:24 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/25 00:07:49 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/25 18:07:54 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,20 +49,21 @@
 # define MAP map->map
 # define MAX_X map->max_x
 # define MAX_Y map->max_y
-# define MLX_PTR mlx.mlx_ptr.mlx_ptr
-# define MLX_WIN mlx.mlx_ptr.mlx_win
-# define MLX_P_IMG mlx.mlx_ptr.mlx_image
-# define MLX_IMG	mlx.img
+# define MLX_PTR mlx->mlx_ptr.mlx_ptr
+# define MLX_WIN mlx->mlx_ptr.mlx_win
+# define MLX_P_IMG mlx->mlx_ptr.mlx_image
+# define MLX_IMG	mlx->img
 # define FDF_CFG_IMG cfg_image
-# define FDF_BPP mlx.FDF_CFG_IMG.bits_per_pixel
-# define FDF_SL mlx.FDF_CFG_IMG.size_line
-# define FDF_ENDI mlx.FDF_CFG_IMG.endian
+# define FDF_BPP mlx->FDF_CFG_IMG.bits_per_pixel
+# define FDF_SL mlx->FDF_CFG_IMG.size_line
+# define FDF_ENDI mlx->FDF_CFG_IMG.endian
 # define FDF_LAST_ELEM_MAP MAX_X * MAX_Y - 1
 # define FDF_CHK_FILE NULL
 
 /*
 **MACRO
 */
+# define FDF_MIDDLE(val) (val) / 2
 # define FDF_GET_MAX_X(val, line) ((val) = ft_num_words((line), (PART_STR)))
 # define FDF_GET_MAX_Y(val, beg) (val) = (list_size(beg))
 
@@ -168,7 +169,7 @@ typedef struct		s_map
 
 typedef struct		s_mlx
 {
-	t_map				*map;
+	t_map				map;
 	struct s_ptr		mlx_ptr;
 	struct s_cfg_image	cfg_image;
 	int					*img;
@@ -222,7 +223,7 @@ void				fdf_map_to_img(t_map *map, int *img);
 /*
 **WINDOW
 */
-void				fdf_work_window(t_map *map);
+void				fdf_work_window(t_mlx *mlx);
 
 /*
 **EVENTS
@@ -236,8 +237,9 @@ void				fdf_err_str(const int err);
 void				fdf_err_ext(const int err);
 
 /*
-**WORK_MAP
+**WORK_FRAME
 */
+void				fdf_work_frame(t_mlx *mlx);
 void				fdf_fit_screen_map(t_map *map);
 void				fdf_scale_map(t_map *map);
 void				fdf_zooming(t_map *map, const float zoom);

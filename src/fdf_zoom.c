@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 20:21:55 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/24 22:42:21 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/25 17:57:00 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,28 +44,4 @@ void	fdf_out_window(t_map *map)
 	max_map.y = MAP[FDF_LAST_ELEM_MAP].y;
 	while (((max_map.x * map->scale) > (ssize_t)MAX_X) || (max_map.y * map->scale) > (ssize_t)MAX_Y)
 		map->scale *= FDF_ZOOM_OUT;
-}
-
-void	fdf_zooming(t_map *map, const float zoom)
-{
-	size_t	i;
-
-	P_UNUSED(zoom);
-	P_UNUSED(map);
-	i = 0;
-	// printf("zoom: %f\n", zoom);
-	// printf("max_X: %zu\n", map->max_x);
-	// printf("max_Y: %zu\n", map->max_y);
-	// while (i < MAX_X * MAX_Y)
-	// {
-		// printf("x: %5d y: %5d z: %5d\n", MAP->x, MAP->y, MAP->z);
-		// MAP[i].x = MAP[i].x * zoom;
-		// MAP[i].y = MAP[i].y * zoom;
-		// MAP[i].z = (int)round((float)MAP->z * zoom);
-		// printf("MAP->x: %d	MAP->y: %d	MAP->z: %d\n", MAP->x, MAP->y, MAP->z);
-		// printf("lx: %5d ly: %5d lz: %5d\n", MAP->x, MAP->y, MAP->z);
-		// if (i == 5)
-			// exit(EXIT_FAILURE);
-		// ++i;
-	// }
 }

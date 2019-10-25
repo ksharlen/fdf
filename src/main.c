@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:53:27 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/23 22:34:24 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/25 17:56:54 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 int		main(int argc, char **argv)
 {
 	t_listfdf		*beg;
-	t_map			map;
+	t_mlx			mlx;
 
 	if (fdf_valid_arg(argc, argv) == SUCCESS)
 	{
 		beg = NULL;
 		if ((beg = fdf_read_file(FDF_MAP)))
 		{
-			fdf_parsing_map(beg, &map);
+			fdf_parsing_map(beg, &mlx.map);
 			list_delete(&beg);
-			fdf_work_window(&map);
+			fdf_work_window(&mlx);
 		}
 	}
 	return (0);

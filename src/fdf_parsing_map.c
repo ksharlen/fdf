@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 19:48:23 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/24 22:29:53 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/25 18:10:45 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,19 @@ static void		valid_map(t_listfdf *beg)
 	}
 }
 
+static void		fdf_map_align(t_map *map)
+{
+	t_coord		center_win;
+	t_coord		center_img;
+
+	center_win.x = FDF_MIDDLE(WIN_X);
+	center_win.y = FDF_MIDDLE(WIN_Y);
+	center_img.x = FDF_MIDDLE(MAP[FDF_LAST_ELEM_MAP].x);
+	center_img.y = FDF_MIDDLE(MAP[FDF_LAST_ELEM_MAP].y);
+	exit(EXIT_FAILURE);
+	// define_center_win_img(&center_win, );
+}
+
 enum e_err		fdf_parsing_map(t_listfdf *beg, t_map *map)
 {
 	valid_map(beg);
@@ -36,5 +49,6 @@ enum e_err		fdf_parsing_map(t_listfdf *beg, t_map *map)
 	fdf_create_map(beg, map);
 	map->scale = FDF_DFLT_SCALE;
 	fdf_fit_screen_map(map);
+	fdf_map_align(map);
 	return (SUCCESS);
 }
