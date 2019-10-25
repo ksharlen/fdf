@@ -6,7 +6,7 @@
 #    By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/18 08:27:12 by ksharlen          #+#    #+#              #
-#    Updated: 2019/10/25 17:51:07 by ksharlen         ###   ########.fr        #
+#    Updated: 2019/10/25 21:36:59 by ksharlen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ DIR_INCLUDE_LINAL	:= ./lib/linal/include/
 INCLUDE_FDF			:= fdf.h
 SRCS				:= main.c\
 							fdf_valid_arg.c\
+							fdf_line_create.c\
 							fdf_read_file.c\
 							fdf_list.c\
 							fdf_parsing_map.c\

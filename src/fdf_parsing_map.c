@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 19:48:23 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/25 18:58:15 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/25 20:43:39 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,8 @@ static void		fdf_map_align(t_map *map)
 	i = 0;
 	while (i < map->max_x * map->max_y)
 	{
-	// printf("here\n");
 		MAP[i].x -= center_img.x;
 		MAP[i].y -= center_img.y;
-		// MAP[i].x += (center_win.x);
-		// MAP[i].y += (center_win.y);
 		++i;
 	}
 }

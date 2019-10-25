@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:17:24 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/25 19:50:13 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/25 23:43:37 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,8 @@
 # define P_N PROG_NAME
 
 # define FDF_TITTLE	"fdf"
-# define WIN_X		1600
-# define WIN_Y 		900
-// # define WIN_X	200
-// # define WIN_Y	200
+# define WIN_X		2560
+# define WIN_Y 		1440
 # define FDF_DFLT_COLOR	0x00ff00
 # define FDF_DFLT_SCALE	1.0
 # define FDF_DFLT_SHIFT_X ((WIN_X) / 2)
@@ -42,8 +40,8 @@
 /*
 **ZOOM
 */
-# define FDF_ZOOM_OUT	0.8
-# define FDF_ZOOM_IN	1.2
+# define FDF_ZOOM_OUT	0.9
+# define FDF_ZOOM_IN	1.1
 
 # define FDF_SHIFT		13
 
@@ -256,6 +254,7 @@ void				fdf_err_ext(const int err);
 /*
 **WORK_FRAME
 */
+void				fdf_line_create(int *img, t_coord *beg, t_coord *end);
 void				fdf_work_frame(t_mlx *mlx);
 void				fdf_fit_screen_map(t_map *map);
 void				fdf_scale_map(t_map *map);
