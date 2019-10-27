@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 22:44:28 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/25 23:30:54 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/27 22:48:16 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void			fdf_map_to_img(t_map *map, int *img)
 	t_coord	curr_pix;
 	t_coord	next_pix;
 	t_coord up_pix;
+	float	arr[3];
 	size_t	i;
 	size_t	j;
 
@@ -37,8 +38,9 @@ void			fdf_map_to_img(t_map *map, int *img)
 		j = 0;
 		while (j < MAX_X)
 		{
-			curr_pix.x = round(MAP[i * MAX_X + j].x * map->scale + map->shift_x);
-			curr_pix.y = round(MAP[i * MAX_X + j].y * map->scale + map->shift_y);
+			fdf_rot_coor(&MAP[i * MAX_X + j], map->matr.x_matr, arr);
+			curr_pix.x = round(arr[0] * MAP[i * MAX_X + j].x * map->scale) + map->shift_x;
+			curr_pix.y = round(arr[1] * MAP[i * MAX_X + j].y * map->scale) + map->shift_y;
 			if (j + 1 != MAX_X)
 			{
 				next_pix.x = round(MAP[i * MAX_X + j + 1].x * map->scale + map->shift_x);

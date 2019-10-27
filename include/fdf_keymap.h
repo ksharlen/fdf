@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 16:44:18 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/25 19:37:45 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/27 20:34:30 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # define KEY_A				0x00
 # define KEY_S				0x01
 # define KEY_D				0x02
+# define KEY_W				0x0D
 # define KEY_F				0x03
 # define KEY__H				0x04
 # define KEY_G				0x05
@@ -28,7 +29,6 @@
 # define KEY_V				0x09
 # define KEY_B				0x0B
 # define KEY_Q				0x0C
-# define KEY_W				0x0D
 # define KEY_E				0x0E
 # define KEY_R				0x0F
 
@@ -79,23 +79,23 @@
 # define KEY_CONTROL		0x3B
 
 
-# define KEY_NUM_KEY_DOT	0x41
-# define KEY_NUM_KEY_MOV	0x43
-# define KEY_NUM_KEY_PLS	0x45
-# define KEY_NUM_KEY_SLSH	0x4B
-# define KEY_NUM_KEY_ENTR	0x4C
-# define KEY_NUM_KEY_SUB	0x4E
-# define KEY_NUM_KEY_CMP	0x51
-# define KEY_NUM_KEY_0		0x52
-# define KEY_NUM_KEY_1		0x53
-# define KEY_NUM_KEY_2		0x54
-# define KEY_NUM_KEY_3		0x55
-# define KEY_NUM_KEY_4		0x56
-# define KEY_NUM_KEY_5		0x57
-# define KEY_NUM_KEY_6		0x58
-# define KEY_NUM_KEY_7		0x59
-# define KEY_NUM_KEY_8		0x5B
-# define KEY_NUM_KEY_9		0x5C
+# define KEY_NUM_DOT		0x41
+# define KEY_NUM_MOV		0x43
+# define KEY_NUM_PLS		0x45
+# define KEY_NUM_SLSH		0x4B
+# define KEY_NUM_ENTR		0x4C
+# define KEY_NUM_SUB		0x4E
+# define KEY_NUM_CMP		0x51
+# define KEY_NUM_0			0x52
+# define KEY_NUM_1			0x53
+# define KEY_NUM_2			0x54
+# define KEY_NUM_3			0x55
+# define KEY_NUM_4			0x56
+# define KEY_NUM_5			0x57
+# define KEY_NUM_6			0x58
+# define KEY_NUM_7			0x59
+# define KEY_NUM_8			0x5B
+# define KEY_NUM_9			0x5C
 
 # define KEY_F3				0x63
 # define KEY_F5				0x60

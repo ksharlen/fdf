@@ -6,7 +6,7 @@
 #    By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/18 08:27:12 by ksharlen          #+#    #+#              #
-#    Updated: 2019/10/25 21:36:59 by ksharlen         ###   ########.fr        #
+#    Updated: 2019/10/27 20:43:27 by ksharlen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ SRCS				:= main.c\
 							fdf_work_frame.c\
 							fdf_events.c\
 							fdf_zoom.c\
+							fdf_work_matr.c\
 							fdf_scale_map.c
 
 OBJS				:= $(SRCS:.c=.o)

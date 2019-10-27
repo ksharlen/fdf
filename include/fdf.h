@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:17:24 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/25 23:43:37 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/27 22:42:31 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@
 # define P_N PROG_NAME
 
 # define FDF_TITTLE	"fdf"
-# define WIN_X		2560
-# define WIN_Y 		1440
+# define WIN_X		2048
+# define WIN_Y 		1100
 # define FDF_DFLT_COLOR	0x00ff00
 # define FDF_DFLT_SCALE	1.0
 # define FDF_DFLT_SHIFT_X ((WIN_X) / 2)
@@ -44,6 +44,11 @@
 # define FDF_ZOOM_IN	1.1
 
 # define FDF_SHIFT		13
+
+# define ROT_LEFT		-0.1f
+# define ROT_RIGHT		0.1f
+# define ROT_UP			ROT_RIGHT
+# define ROT_DOWN		ROT_LEFT
 
 /*
 **FDF_ALIAS
@@ -65,13 +70,24 @@
 /*
 **KEY_MAP_FOR_FDF
 */
+# define FDF_A	KEY_A
+# define FDF_S	KEY_S
+# define FDF_D	KEY_D
+# define FDF_W	KEY_W
 # define FDF_ESC KEY_ESC
-# define FDF_NUM_KEY_PLS KEY_NUM_KEY_PLS
-# define FDF_NUM_KEY_SUB KEY_NUM_KEY_SUB
-# define FDF_LEFT_ARROW KEY_LEFT_ARROW
-# define FDF_RIGHT_ARROW KEY_RIGHT_ARROW
-# define FDF_UP_ARROW KEY_UP_ARROW
-# define FDF_DOWN_ARROW KEY_DOWN_ARROW
+# define FDF_NUM_KEY_PLS KEY_NUM_PLS
+# define FDF_NUM_KEY_SUB KEY_NUM_SUB
+
+# define FDF_NUM_4 KEY_NUM_4
+# define FDF_NUM_5 KEY_NUM_5
+# define FDF_NUM_6 KEY_NUM_6
+# define FDF_NUM_7 KEY_NUM_7
+# define FDF_NUM_8 KEY_NUM_8
+# define FDF_NUM_9 KEY_NUM_9
+// # define FDF_LEFT_ARROW KEY_LEFT_ARROW
+// # define FDF_RIGHT_ARROW KEY_RIGHT_ARROW
+// # define FDF_UP_ARROW KEY_UP_ARROW
+// # define FDF_DOWN_ARROW KEY_DOWN_ARROW
 
 /*
 **MOUSE
@@ -90,6 +106,11 @@
 # define FDF_MIDDLE(val) (val) / 2
 # define FDF_GET_MAX_X(val, line) ((val) = ft_num_words((line), (PART_STR)))
 # define FDF_GET_MAX_Y(val, beg) (val) = (list_size(beg))
+# define CHK_ROT_X(key) ((key) == FDF_NUM_4 || (key) == FDF_NUM_6)
+# define CHK_ROT_Y(key) ((key) == FDF_NUM_8 || (key) == FDF_NUM_5)
+# define CHK_ROT_Z(key) ((key) == FDF_NUM_7 || (key) == FDF_NUM_9)
+
+# define CHK_ROTATE(key) (CHK_ROT_X(key) || CHK_ROT_Y(key) || CHK_ROT_Z(key))
 
 /*
 **ERRORS
@@ -172,14 +193,23 @@ struct				s_ptr
 	void		*mlx_image;
 };
 
+//!Зарефакторить
+struct				s_matr
+{
+	float	x_matr[3][3];
+	float	y_matr[3][3];
+	float	z_matr[3][3];
+};
+
 typedef struct		s_map
 {
-	t_pixel		*map;
-	size_t		max_x;
-	size_t		max_y;
-	float		scale;
-	int32_t		shift_x;
-	int32_t		shift_y;
+	t_pixel			*map;
+	struct s_matr	matr;
+	size_t			max_x;
+	size_t			max_y;
+	float			scale;
+	int32_t			shift_x;
+	int32_t			shift_y;
 }					t_map;
 
 typedef struct		s_mlx
@@ -203,6 +233,8 @@ struct				s_gnl
 	char		*line;
 	int			ret;
 };
+
+
 
 // struct				s_event
 // {
@@ -261,5 +293,7 @@ void				fdf_scale_map(t_map *map);
 void				fdf_zooming(t_map *map, const float zoom);
 void				fdf_out_window(t_map *map);
 void				fdf_in_window(t_map *map);
+void				fdf_event_matr(int key, struct s_matr *matr);
+void				fdf_rot_coor(t_pixel *pix, float matr[3][3], float arr[3]);
 
 #endif
