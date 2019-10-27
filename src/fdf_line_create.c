@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 20:55:56 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/25 23:32:04 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/27 23:27:43 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	fdf_line_create(int *img, t_coord *beg, t_coord *end)
 	{
 		do
 		{
+			printf("here\n");
 			f += A * signa;
 			if (f > 0)
 			{
@@ -62,7 +63,7 @@ void	fdf_line_create(int *img, t_coord *beg, t_coord *end)
 			curr.x -= signb;
 			if (check_pix_in_to_win(&curr) == SUCCESS)
 				*(img + WIN_X * curr.y + curr.x) = FDF_DFLT_COLOR;
-		} while (curr.x != end->x || curr.y != end->y);
+		} while (curr.x != end->x && curr.y != end->y);
 	}
 	else
 	{
@@ -77,6 +78,6 @@ void	fdf_line_create(int *img, t_coord *beg, t_coord *end)
 			curr.y += signa;
 			if (check_pix_in_to_win(&curr) == SUCCESS)
 				*(img + WIN_X * curr.y + curr.x) = FDF_DFLT_COLOR;
-		} while (curr.x != end->x || curr.y != end->y);
+		} while (curr.x != end->x && curr.y != end->y);
 	}
 }

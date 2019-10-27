@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 20:37:19 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/27 22:41:17 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/27 23:20:51 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	fdf_rot_x(int key, float matr[3][3])
 	matr[1][1] = matr[1][1] * cos(radian) + matr[1][2] * sin(radian);
 	matr[1][2] = matr[1][1] * (-sin(radian)) + matr[1][2] * cos(radian);
 	matr[2][0] = matr[2][0];
-	matr[2][1] = matr[2][1] * cos(radian) + matr[2][2] * cos(radian);
+	matr[2][1] = matr[2][1] * cos(radian) + matr[2][2] * sin(radian);
 	matr[2][2] = matr[2][1] * (-sin(radian)) + matr[2][2] * cos(radian);
 }
 

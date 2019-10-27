@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 22:44:28 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/27 22:48:16 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/27 23:14:27 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,20 @@ void			fdf_map_to_img(t_map *map, int *img)
 		while (j < MAX_X)
 		{
 			fdf_rot_coor(&MAP[i * MAX_X + j], map->matr.x_matr, arr);
-			curr_pix.x = round(arr[0] * MAP[i * MAX_X + j].x * map->scale) + map->shift_x;
-			curr_pix.y = round(arr[1] * MAP[i * MAX_X + j].y * map->scale) + map->shift_y;
+			curr_pix.x = (int)round(arr[0] * map->scale) + map->shift_x;
+			curr_pix.y = (int)round(arr[1] * map->scale) + map->shift_y;
 			if (j + 1 != MAX_X)
 			{
-				next_pix.x = round(MAP[i * MAX_X + j + 1].x * map->scale + map->shift_x);
-				next_pix.y = round(MAP[i * MAX_X + j + 1].y * map->scale + map->shift_y);
+				fdf_rot_coor(&MAP[i * MAX_X + j + 1], map->matr.x_matr, arr);
+				next_pix.x = (int)round(arr[0] * map->scale) + map->shift_x;
+				next_pix.y = (int)round(arr[1] * map->scale) + map->shift_y;
 				fdf_line_create(img, &curr_pix, &next_pix);
 			}
 			if (i > 0)
 			{
+				fdf_rot_coor(&MAP[(i - 1) * MAX_X + j], map->matr.x_matr, arr);
 				up_pix.x = curr_pix.x;
-				up_pix.y = round(MAP[(i - 1) * MAX_X + j].y * map->scale + map->shift_y);
+				up_pix.y = (int)round(arr[1] * map->scale) + map->shift_y;
 				fdf_line_create(img, &curr_pix, &up_pix);
 			}
 			++j;
