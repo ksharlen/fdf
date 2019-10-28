@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 22:44:28 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/27 23:14:27 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/28 19:11:46 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,16 @@
 
 void			fdf_map_to_img(t_map *map, int *img)
 {
+	// t_coord beg;
+	// t_coord end;
+
+	// P_UNUSED(map);
+	// beg.x = 1500;
+	// beg.y = 1500;
+
+	// end.x = 100;
+	// end.y = 100;
+	// fdf_line_create(img, beg, end);
 	t_coord	curr_pix;
 	t_coord	next_pix;
 	t_coord up_pix;
@@ -46,14 +56,14 @@ void			fdf_map_to_img(t_map *map, int *img)
 				fdf_rot_coor(&MAP[i * MAX_X + j + 1], map->matr.x_matr, arr);
 				next_pix.x = (int)round(arr[0] * map->scale) + map->shift_x;
 				next_pix.y = (int)round(arr[1] * map->scale) + map->shift_y;
-				fdf_line_create(img, &curr_pix, &next_pix);
+				fdf_line_create(img, curr_pix, next_pix);
 			}
 			if (i > 0)
 			{
 				fdf_rot_coor(&MAP[(i - 1) * MAX_X + j], map->matr.x_matr, arr);
 				up_pix.x = curr_pix.x;
 				up_pix.y = (int)round(arr[1] * map->scale) + map->shift_y;
-				fdf_line_create(img, &curr_pix, &up_pix);
+				fdf_line_create(img, curr_pix, up_pix);
 			}
 			++j;
 		}

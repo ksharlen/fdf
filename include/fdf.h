@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:17:24 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/27 23:23:26 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/28 17:38:52 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,8 +174,8 @@ typedef struct		s_cfg_image
 
 typedef struct		s_coord
 {
-	ssize_t	x;
-	ssize_t y;
+	int	x;
+	int	y;
 }				t_coord;
 
 typedef struct		s_pixel
@@ -286,7 +286,7 @@ void				fdf_err_ext(const int err);
 /*
 **WORK_FRAME
 */
-void				fdf_line_create(int *img, t_coord *beg, t_coord *end);
+void				fdf_line_create(int *img, t_coord beg, t_coord end);
 void				fdf_work_frame(t_mlx *mlx);
 void				fdf_fit_screen_map(t_map *map);
 void				fdf_scale_map(t_map *map);
