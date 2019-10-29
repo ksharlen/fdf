@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 15:41:54 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/29 15:44:23 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/29 17:06:51 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,15 @@ void	print_map(t_map *map)
 		j = 0;
 		while (j < MAX_X)
 		{
-			ft_printf("x: %d	y: %d\n", MAP[i * WIN_X + j].x, MAP[i * WIN_X + j]);
+			ft_printf("x: %d	y: %d\n", MAP[i * MAX_X + j].x, MAP[i * MAX_X + j]);
 			++j;
 		}
 		++i;
 	}
+}
+
+void	print_map_ext(t_map *map)
+{
+	print_map(map);
+	exit(EXIT_FAILURE);
 }

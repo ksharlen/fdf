@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:17:24 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/29 15:44:48 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/29 17:07:17 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -308,5 +308,7 @@ void				fdf_event_rad(int key, struct s_rad *rad);
 **tmp
 */
 void				print_map(t_map *map);
+void				print_map_ext(t_map *map);
+# define PRINT_MAP print_map_ext
 
 #endif

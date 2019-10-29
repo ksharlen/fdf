@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 19:48:23 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/29 15:46:32 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/29 17:37:47 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,46 +50,6 @@ static void		fdf_map_align(t_map *map)
 		++i;
 	}
 }
-
-// static void		fdf_init_matr(float matr[3][3])
-// {
-// 	matr[0][0] = 1.0f;
-// 	matr[0][1] = 0.0f;
-// 	matr[0][2] = 0.0f;
-// 	matr[1][0] = 0.0f;
-// 	matr[1][1] = 1.0f;
-// 	matr[1][2] = 0.0f;
-// 	matr[2][0] = 0.0f;
-// 	matr[2][1] = 0.0f;
-// 	matr[2][2] = 1.0f;
-// }
-
-// static void		fdf_init_matrix(struct s_matr *matr)
-// {
-// 	fdf_init_matr(MATR_X);
-// 	fdf_init_matr(MATR_Y);
-// 	fdf_init_matr(MATR_Z);
-// }
-
-// static void		print_matr(float matr[3][3])
-// {
-// 	int i;
-// 	int j;
-
-// 	i = 0;
-// 	while (i < 3)
-// 	{
-// 		j = 0;
-// 		while (j < 3)
-// 		{
-// 			printf("%f	", matr[i][j]);
-// 			++j;
-// 		}
-// 		printf("\n");
-// 		++i;
-// 	}
-// 	printf("\n");
-// }
 
 static void		fdf_init_rad(struct s_rad *rad)
 {

@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 22:17:12 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/29 15:49:29 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/29 17:38:05 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ struct s_cfg_image g_img;
 static void		init_mlx(t_mlx *mlx)
 {
 	FDF_CHK_NULL_PTR(MLX_PTR = mlx_init(), FDF_E_INIT);
-	// print_map(&mlx->map);
-	// exit(EXIT_FAILURE);
 	FDF_CHK_NULL_PTR(MLX_WIN = mlx_new_window(MLX_PTR, WIN_X, WIN_Y,
 					PROG_NAME), FDF_E_WIN);
 	FDF_CHK_NULL_PTR(MLX_P_IMG = mlx_new_image(MLX_PTR, WIN_X, WIN_Y),
