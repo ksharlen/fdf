@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:17:24 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/29 17:07:17 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/29 19:47:14 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@
 
 # define FDF_SHIFT		13
 
-# define FDF_ROT_LEFT		-0.1f
-# define FDF_ROT_RIGHT		0.1f
+# define FDF_ROT_LEFT		-(M_PI / 128)
+# define FDF_ROT_RIGHT		M_PI / 128
 # define FDF_ROT_UP			FDF_ROT_RIGHT
 # define FDF_ROT_DOWN		FDF_ROT_LEFT
 
@@ -294,7 +294,7 @@ void				fdf_err_ext(const int err);
 /*
 **WORK_FRAME
 */
-void				fdf_line_create(int *img, t_coord *beg, t_coord *end);
+void				fdf_line_create(int *img, t_coord beg, t_coord *end);
 void				fdf_work_frame(t_mlx *mlx);
 void				fdf_fit_screen_map(t_map *map);
 void				fdf_scale_map(t_map *map);

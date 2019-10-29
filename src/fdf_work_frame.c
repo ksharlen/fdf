@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 22:44:28 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/29 17:37:57 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/29 19:47:23 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ static t_coord	fdf_rot(t_pixel *elem, struct s_rad *rad, float *scale, struct s_
 {
 	t_coord	coord;
 
-	coord.x = (X * cos(RAD_Y) + (-Y * sin(RAD_X) + Z * cos(RAD_X)) * sin(RAD_Y))
-				* cos(RAD_Z) - (Y * cos(RAD_X) + Z * sin(RAD_X)) * sin(RAD_Z);
-	coord.y = -(X * cos(RAD_Y) + (-Y * sin(RAD_X) + Z * cos(RAD_X)) * sin(RAD_Y))
-				* sin(RAD_Z) + (Y * cos(RAD_X) + Z * sin(RAD_X)) * cos(RAD_Z);
-	coord.x = coord.x * (int)round(*scale) + SHIFT_X;
-	coord.y = coord.y * (int)round(*scale) + SHIFT_Y;
+	coord.x = (int)round(((X * cos(RAD_Y) + (-Y * sin(RAD_X) + Z * cos(RAD_X)) * sin(RAD_Y))
+				* cos(RAD_Z) - (Y * cos(RAD_X) + Z * sin(RAD_X)) * sin(RAD_Z)) * *scale) + SHIFT_X;
+	coord.y = (int)round((-(X * cos(RAD_Y) + (-Y * sin(RAD_X) + Z * cos(RAD_X)) * sin(RAD_Y))
+				* sin(RAD_Z) + (Y * cos(RAD_X) + Z * sin(RAD_X)) * cos(RAD_Z)) * *scale) + SHIFT_Y;
+	// coord.x = coord.x * (int)round(*scale) + SHIFT_X;
+	// coord.y = coord.y * (int)round(*scale) + SHIFT_Y;
 	return (coord);
 }
 
@@ -68,12 +68,12 @@ void				fdf_map_to_img(t_map *map, int *img)
 			{
 				//!Все равно циклится
 				next = fdf_rot(&MAP[i * MAX_X + j + 1], &map->rad, &map->scale, &map->shift);
-				fdf_line_create(img, &curr, &next);
+				fdf_line_create(img, curr, &next);
 			}
 			if (i)
 			{
 				up = fdf_rot(&MAP[(i - 1) * MAX_X + j], &map->rad, &map->scale, &map->shift);
-				fdf_line_create(img, &curr, &up);
+				fdf_line_create(img, curr, &up);
 			}
 			++j;
 		}
