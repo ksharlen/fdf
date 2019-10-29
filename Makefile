@@ -6,7 +6,7 @@
 #    By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/18 08:27:12 by ksharlen          #+#    #+#              #
-#    Updated: 2019/10/27 20:43:27 by ksharlen         ###   ########.fr        #
+#    Updated: 2019/10/29 15:44:57 by ksharlen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,9 +32,9 @@ DIR_INCLUDE_LINAL	:= ./lib/linal/include/
 INCLUDE_FDF			:= fdf.h
 SRCS				:= main.c\
 							fdf_valid_arg.c\
-							fdf_line_create.c\
 							fdf_read_file.c\
 							fdf_list.c\
+							fdf_line_create.c\
 							fdf_parsing_map.c\
 							fdf_create_map.c\
 							fdf_work_window.c\
@@ -42,8 +42,9 @@ SRCS				:= main.c\
 							fdf_work_frame.c\
 							fdf_events.c\
 							fdf_zoom.c\
-							fdf_work_matr.c\
-							fdf_scale_map.c
+							fdf_work_rot.c\
+							fdf_scale_map.c\
+							fdf_test.c
 
 OBJS				:= $(SRCS:.c=.o)
 DIRS_INCLUDE		:= $(DIR_INCLUDE_LIBFT) $(DIR_INCLUDE_FDF) $(DIR_INCLUDE_MLX) $(DIR_INCLUDE_LINAL)
@@ -53,7 +54,7 @@ INCLUDES			:= $(INCLUDE_FDF) $(INCLUDE_LIBFT) $(INCLUDE_MLX)
 FRAMEWORKS			:= -framework OpenGL -framework AppKit
 
 CC					:= gcc
-CFLAGS				:= -g -Wall -Wextra -Werror
+# CFLAGS				:= -g -Wall -Wextra -Werror
 OFLAGS				:= -c
 IFLAGS				:= -I
 NFLAGS				:= -o

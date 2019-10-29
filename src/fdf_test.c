@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   fdf_test.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/18 08:53:27 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/29 15:47:13 by ksharlen         ###   ########.fr       */
+/*   Created: 2019/10/29 15:41:54 by ksharlen          #+#    #+#             */
+/*   Updated: 2019/10/29 15:44:23 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int		main(int argc, char **argv)
+void	print_map(t_map *map)
 {
-	t_listfdf		*beg;
-	t_mlx			mlx;
+	size_t	i;
+	size_t	j;
 
-	if (fdf_valid_arg(argc, argv) == SUCCESS)
+	i = 0;
+	while (i < MAX_Y)
 	{
-		beg = NULL;
-		if ((beg = fdf_read_file(FDF_MAP)))
+		j = 0;
+		while (j < MAX_X)
 		{
-			fdf_parsing_map(beg, &mlx.map);
-			list_delete(&beg);
-			fdf_work_window(&mlx);
+			ft_printf("x: %d	y: %d\n", MAP[i * WIN_X + j].x, MAP[i * WIN_X + j]);
+			++j;
 		}
+		++i;
 	}
-	return (0);
 }

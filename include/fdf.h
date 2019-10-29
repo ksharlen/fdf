@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:17:24 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/28 17:38:52 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/29 15:44:48 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@
 
 # define FDF_SHIFT		13
 
-# define ROT_LEFT		-0.1f
-# define ROT_RIGHT		0.1f
-# define ROT_UP			ROT_RIGHT
-# define ROT_DOWN		ROT_LEFT
+# define FDF_ROT_LEFT		-0.1f
+# define FDF_ROT_RIGHT		0.1f
+# define FDF_ROT_UP			FDF_ROT_RIGHT
+# define FDF_ROT_DOWN		FDF_ROT_LEFT
 
 /*
 **FDF_ALIAS
@@ -194,22 +194,29 @@ struct				s_ptr
 };
 
 //!Зарефакторить
-struct				s_matr
+struct				s_rad
 {
-	float	x_matr[3][3];
-	float	y_matr[3][3];
-	float	z_matr[3][3];
+	float	rad_x;
+	float	rad_y;
+	float	rad_z;
+};
+
+struct				s_shift
+{
+	int32_t	shift_x;
+	int32_t	shift_y;
 };
 
 typedef struct		s_map
 {
 	t_pixel			*map;
-	struct s_matr	matr;
+	struct s_rad	rad;
 	size_t			max_x;
 	size_t			max_y;
 	float			scale;
-	int32_t			shift_x;
-	int32_t			shift_y;
+	struct s_shift	shift;
+	// int32_t			shift_x;
+	// int32_t			shift_y;
 }					t_map;
 
 typedef struct		s_mlx
@@ -228,6 +235,7 @@ typedef struct		s_listfdf
 	struct s_listfdf	*next;
 }					t_listfdf;
 
+
 struct				s_gnl
 {
 	char		*line;
@@ -235,7 +243,7 @@ struct				s_gnl
 };
 
 
-
+extern struct s_cfg_image g_img;
 // struct				s_event
 // {
 // 	struct s_ptr	mlx_ptr;
@@ -286,14 +294,19 @@ void				fdf_err_ext(const int err);
 /*
 **WORK_FRAME
 */
-void				fdf_line_create(int *img, t_coord beg, t_coord end);
+void				fdf_line_create(int *img, t_coord *beg, t_coord *end);
 void				fdf_work_frame(t_mlx *mlx);
 void				fdf_fit_screen_map(t_map *map);
 void				fdf_scale_map(t_map *map);
 void				fdf_zooming(t_map *map, const float zoom);
 void				fdf_out_window(t_map *map);
 void				fdf_in_window(t_map *map);
-void				fdf_event_matr(int key, struct s_matr *matr);
-void				fdf_rot_coor(t_pixel *pix, float matr[3][3], float arr[3]);
+void				fdf_event_rad(int key, struct s_rad *rad);
+// void				fdf_rot_coor(t_pixel *pix, float matr[3][3], float arr[3]);
+
+/*
+**tmp
+*/
+void				print_map(t_map *map);
 
 #endif

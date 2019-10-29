@@ -6,15 +6,15 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 19:48:23 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/27 20:04:10 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/29 15:46:32 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-#define MATR_X matr->x_matr
-#define MATR_Y matr->y_matr
-#define MATR_Z matr->z_matr
+#define RAD_X rad->rad_x
+#define RAD_Y rad->rad_y
+#define RAD_Z rad->rad_z
 
 static void		valid_map(t_listfdf *beg)
 {
@@ -51,25 +51,25 @@ static void		fdf_map_align(t_map *map)
 	}
 }
 
-static void		fdf_init_matr(float matr[3][3])
-{
-	matr[0][0] = 1.0f;
-	matr[0][1] = 0.0f;
-	matr[0][2] = 0.0f;
-	matr[1][0] = 0.0f;
-	matr[1][1] = 1.0f;
-	matr[1][2] = 0.0f;
-	matr[2][0] = 0.0f;
-	matr[2][1] = 0.0f;
-	matr[2][2] = 1.0f;
-}
+// static void		fdf_init_matr(float matr[3][3])
+// {
+// 	matr[0][0] = 1.0f;
+// 	matr[0][1] = 0.0f;
+// 	matr[0][2] = 0.0f;
+// 	matr[1][0] = 0.0f;
+// 	matr[1][1] = 1.0f;
+// 	matr[1][2] = 0.0f;
+// 	matr[2][0] = 0.0f;
+// 	matr[2][1] = 0.0f;
+// 	matr[2][2] = 1.0f;
+// }
 
-static void		fdf_init_matrix(struct s_matr *matr)
-{
-	fdf_init_matr(MATR_X);
-	fdf_init_matr(MATR_Y);
-	fdf_init_matr(MATR_Z);
-}
+// static void		fdf_init_matrix(struct s_matr *matr)
+// {
+// 	fdf_init_matr(MATR_X);
+// 	fdf_init_matr(MATR_Y);
+// 	fdf_init_matr(MATR_Z);
+// }
 
 // static void		print_matr(float matr[3][3])
 // {
@@ -91,20 +91,23 @@ static void		fdf_init_matrix(struct s_matr *matr)
 // 	printf("\n");
 // }
 
+static void		fdf_init_rad(struct s_rad *rad)
+{
+	RAD_X = 0.0;
+	RAD_Y = 0.0;
+	RAD_Z = 0.0;
+}
+
 enum e_err		fdf_parsing_map(t_listfdf *beg, t_map *map)
 {
 	valid_map(beg);
 	FDF_GET_MAX_X(MAX_X, beg->line);
 	FDF_GET_MAX_Y(MAX_Y, beg);
-	fdf_init_matrix(&map->matr);
-// print_matr(map->matr.x_matr);
-// print_matr(map->matr.y_matr);
-// print_matr(map->matr.z_matr);
-// exit(EXIT_FAILURE);
 	fdf_create_map(beg, map);
+	fdf_init_rad(&map->rad);
 	map->scale = FDF_DFLT_SCALE;
-	map->shift_x = FDF_DFLT_SHIFT_X;
-	map->shift_y = FDF_DFLT_SHIFT_Y;
+	map->shift.shift_x = FDF_DFLT_SHIFT_X;
+	map->shift.shift_y = FDF_DFLT_SHIFT_Y;
 	fdf_fit_screen_map(map);
 	fdf_map_align(map);
 	return (SUCCESS);
