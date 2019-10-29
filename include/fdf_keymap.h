@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 16:44:18 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/27 20:34:30 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/29 22:01:09 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@
 # define KEY_CAPS_LOCK		0x39
 # define KEY_OPTION			0x3A
 # define KEY_CONTROL		0x3B
-
 
 # define KEY_NUM_DOT		0x41
 # define KEY_NUM_MOV		0x43

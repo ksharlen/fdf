@@ -6,11 +6,9 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:17:24 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/29 21:56:18 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/29 22:02:09 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-//!NEED REFACT HEADERS
 
 #ifndef FDF_H
 # define FDF_H
@@ -161,7 +159,7 @@ typedef struct		s_coord
 {
 	int	x;
 	int	y;
-}				t_coord;
+}					t_coord;
 
 typedef struct		s_pixel
 {
@@ -178,7 +176,6 @@ struct				s_ptr
 	void		*mlx_image;
 };
 
-//!Зарефакторить
 struct				s_rad
 {
 	float	rad_x;
@@ -210,14 +207,11 @@ typedef struct		s_mlx
 	int					*img;
 }					t_mlx;
 
-
-
 typedef struct		s_listfdf
 {
 	char				*line;
 	struct s_listfdf	*next;
 }					t_listfdf;
-
 
 struct				s_gnl
 {
