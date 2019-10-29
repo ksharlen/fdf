@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:17:24 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/29 21:38:43 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/29 21:56:18 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@
 /*
 **FDF_ALIAS
 */
+# define FDF_INF 1
 # define MAP map->map
 # define MAX_X map->max_x
 # define MAX_Y map->max_y
@@ -222,6 +223,16 @@ struct				s_gnl
 {
 	char		*line;
 	int			ret;
+};
+
+struct				s_line_create
+{
+	int dx;
+	int sx;
+	int sy;
+	int dy;
+	int err;
+	int e2;
 };
 
 /*
