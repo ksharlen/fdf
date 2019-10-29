@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 22:44:28 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/29 19:47:23 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/29 21:40:29 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,19 +34,7 @@ static t_coord	fdf_rot(t_pixel *elem, struct s_rad *rad, float *scale, struct s_
 				* cos(RAD_Z) - (Y * cos(RAD_X) + Z * sin(RAD_X)) * sin(RAD_Z)) * *scale) + SHIFT_X;
 	coord.y = (int)round((-(X * cos(RAD_Y) + (-Y * sin(RAD_X) + Z * cos(RAD_X)) * sin(RAD_Y))
 				* sin(RAD_Z) + (Y * cos(RAD_X) + Z * sin(RAD_X)) * cos(RAD_Z)) * *scale) + SHIFT_Y;
-	// coord.x = coord.x * (int)round(*scale) + SHIFT_X;
-	// coord.y = coord.y * (int)round(*scale) + SHIFT_Y;
 	return (coord);
-}
-
-static int	chk_cmp(int x1, int x2, int y1, int y2)
-{
-	if (x1 == x2)
-	{
-		if (y1 == y2 && y1 == x1)
-			return (FAILURE);
-	}
-	return (SUCCESS);
 }
 
 void				fdf_map_to_img(t_map *map, int *img)
@@ -66,7 +54,6 @@ void				fdf_map_to_img(t_map *map, int *img)
 			curr = fdf_rot(&MAP[i * MAX_X + j], &map->rad, &map->scale, &map->shift);
 			if (j + 1 != MAX_X)
 			{
-				//!Все равно циклится
 				next = fdf_rot(&MAP[i * MAX_X + j + 1], &map->rad, &map->scale, &map->shift);
 				fdf_line_create(img, curr, &next);
 			}
@@ -80,7 +67,6 @@ void				fdf_map_to_img(t_map *map, int *img)
 		++i;
 	}
 }
-
 
 void			fdf_work_frame(t_mlx *mlx)
 {

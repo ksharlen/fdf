@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:17:24 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/29 19:47:14 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/29 21:38:43 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,6 @@
 # define FDF_NUM_7 KEY_NUM_7
 # define FDF_NUM_8 KEY_NUM_8
 # define FDF_NUM_9 KEY_NUM_9
-// # define FDF_LEFT_ARROW KEY_LEFT_ARROW
-// # define FDF_RIGHT_ARROW KEY_RIGHT_ARROW
-// # define FDF_UP_ARROW KEY_UP_ARROW
-// # define FDF_DOWN_ARROW KEY_DOWN_ARROW
 
 /*
 **MOUSE
@@ -140,18 +136,6 @@
 */
 # define FDF_CHK_ERR(val, err) if ((val) == F) FDF_PRINT_ERR_EXT(err)
 # define FDF_CHK_NUMM_PTR(ptr, err) if (!(val)) FDF_PRINT_ERR_EXT(err)
-
-//!need delete
-/*
-**color and height repository
-*/
-# define POS_H 32
-# define FDF_SET_HEIGHT_L(val, height)	(((val) | (height)) << POS_H)
-# define FDF_SET_COLOR_L(val, color)	((val) | (color))
-# define FDF_GET_FAST_COLOR_L(val)		((val))
-# define FDF_GET_COLOR_L(val)			(((val) << POS_H) >> POS_H)
-# define FDF_GET_HEIGHT_L(val)			(((val) >> POS_H))
-# define FDF_SET_HC_L(v, h, c) FDF_SET_HEIGHT_L(v, h) | FDF_SET_COLOR_L(v, c)
 
 /*
 **EVENTS
@@ -215,8 +199,6 @@ typedef struct		s_map
 	size_t			max_y;
 	float			scale;
 	struct s_shift	shift;
-	// int32_t			shift_x;
-	// int32_t			shift_y;
 }					t_map;
 
 typedef struct		s_mlx
@@ -242,14 +224,6 @@ struct				s_gnl
 	int			ret;
 };
 
-
-extern struct s_cfg_image g_img;
-// struct				s_event
-// {
-// 	struct s_ptr	mlx_ptr;
-// 	t_map			*map;
-// }
-
 /*
 **VALID
 */
@@ -271,7 +245,7 @@ t_listfdf			*fdf_read_file(const char *filename);
 /*
 **WORK_MAP
 */
-enum e_err			fdf_parsing_map(t_listfdf *beg, t_map *map);
+void				fdf_parsing_map(t_listfdf *beg, t_map *map);
 void				fdf_create_map(t_listfdf *beg, t_map *map);
 void				fdf_map_to_img(t_map *map, int *img);
 
@@ -302,13 +276,5 @@ void				fdf_zooming(t_map *map, const float zoom);
 void				fdf_out_window(t_map *map);
 void				fdf_in_window(t_map *map);
 void				fdf_event_rad(int key, struct s_rad *rad);
-// void				fdf_rot_coor(t_pixel *pix, float matr[3][3], float arr[3]);
-
-/*
-**tmp
-*/
-void				print_map(t_map *map);
-void				print_map_ext(t_map *map);
-# define PRINT_MAP print_map_ext
 
 #endif

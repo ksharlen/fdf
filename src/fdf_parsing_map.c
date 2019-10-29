@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 19:48:23 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/29 17:37:47 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/29 21:31:56 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static void		fdf_init_rad(struct s_rad *rad)
 	RAD_Z = 0.0;
 }
 
-enum e_err		fdf_parsing_map(t_listfdf *beg, t_map *map)
+void			fdf_parsing_map(t_listfdf *beg, t_map *map)
 {
 	valid_map(beg);
 	FDF_GET_MAX_X(MAX_X, beg->line);
@@ -70,5 +70,4 @@ enum e_err		fdf_parsing_map(t_listfdf *beg, t_map *map)
 	map->shift.shift_y = FDF_DFLT_SHIFT_Y;
 	fdf_fit_screen_map(map);
 	fdf_map_align(map);
-	return (SUCCESS);
 }

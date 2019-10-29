@@ -6,7 +6,7 @@
 #    By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/18 08:27:12 by ksharlen          #+#    #+#              #
-#    Updated: 2019/10/29 15:44:57 by ksharlen         ###   ########.fr        #
+#    Updated: 2019/10/29 21:39:45 by ksharlen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,9 +42,7 @@ SRCS				:= main.c\
 							fdf_work_frame.c\
 							fdf_events.c\
 							fdf_zoom.c\
-							fdf_work_rot.c\
-							fdf_scale_map.c\
-							fdf_test.c
+							fdf_event_rad.c\
 
 OBJS				:= $(SRCS:.c=.o)
 DIRS_INCLUDE		:= $(DIR_INCLUDE_LIBFT) $(DIR_INCLUDE_FDF) $(DIR_INCLUDE_MLX) $(DIR_INCLUDE_LINAL)
@@ -54,7 +52,7 @@ INCLUDES			:= $(INCLUDE_FDF) $(INCLUDE_LIBFT) $(INCLUDE_MLX)
 FRAMEWORKS			:= -framework OpenGL -framework AppKit
 
 CC					:= gcc
-# CFLAGS				:= -g -Wall -Wextra -Werror
+CFLAGS				:= -g -Wall -Wextra -Werror
 OFLAGS				:= -c
 IFLAGS				:= -I
 NFLAGS				:= -o
