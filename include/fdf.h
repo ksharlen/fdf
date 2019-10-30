@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:17:24 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/30 19:43:49 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/30 21:57:58 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,25 +69,27 @@
 /*
 **KEY_MAP_FOR_FDF
 */
-# define FDF_A	KEY_A
-# define FDF_S	KEY_S
-# define FDF_D	KEY_D
-# define FDF_W	KEY_W
-# define FDF_ESC KEY_ESC
-# define FDF_NUM_KEY_PLS KEY_NUM_PLS
-# define FDF_NUM_KEY_SUB KEY_NUM_SUB
+# define FDF_A				KEY_A
+# define FDF_S				KEY_S
+# define FDF_D				KEY_D
+# define FDF_W				KEY_W
+# define FDF_ESC 			KEY_ESC
+# define FDF_NUM_KEY_PLS 	KEY_NUM_PLS
+# define FDF_NUM_KEY_SUB 	KEY_NUM_SUB
 
-# define FDF_NUM_4 KEY_NUM_4
-# define FDF_NUM_5 KEY_NUM_5
-# define FDF_NUM_6 KEY_NUM_6
-# define FDF_NUM_7 KEY_NUM_7
-# define FDF_NUM_8 KEY_NUM_8
-# define FDF_NUM_9 KEY_NUM_9
+# define FDF_NUM_4			KEY_NUM_4
+# define FDF_NUM_5			KEY_NUM_5
+# define FDF_NUM_6			KEY_NUM_6
+# define FDF_NUM_7			KEY_NUM_7
+# define FDF_NUM_8			KEY_NUM_8
+# define FDF_NUM_9			KEY_NUM_9
 
-# define FDF_UP_ARROW	KEY_UP_ARROW
-# define FDF_DOWN_ARROW	KEY_DOWN_ARROW
+# define FDF_V				KEY_V
 
-# define FDF_SPACE KEY_SPACE
+# define FDF_UP_ARROW		KEY_UP_ARROW
+# define FDF_DOWN_ARROW		KEY_DOWN_ARROW
+
+# define FDF_SPACE			KEY_SPACE
 
 /*
 **MOUSE
@@ -123,6 +125,26 @@
 # define CHK_SCALE(key) ((key) == FDF_NUM_KEY_PLS || (key) == FDF_NUM_KEY_SUB)
 # define CHK_SHIFT(key) (PRS_A(key) || PRS_S(key) || PRS_D(key) || PRS_W(key))
 # define CHK_HEIGHT(key) ((key) == FDF_UP_ARROW || (key) == FDF_DOWN_ARROW)
+
+/*
+**MENU
+*/
+# define FDF_ZOOM_UP	"zoom_up: <+>"
+# define FDF_ZOOM_DOWN	"zoom_down: <->"
+
+# define FDF_MOV_UP		"mov_up: <w>"
+# define FDF_MOV_DOWN	"mov_down: <s>"
+# define FDF_MOV_LEFT	"mov_left: <a>"
+# define FDF_MOV_RIGHT	"mov_right: <d>"
+
+# define FDF_ROT_X_L	"rot_x_left: <num_4>"
+# define FDF_ROT_X_R	"rot_x_right: <num_6>"
+# define FDF_ROT_Y_L	"rot_y_up: <num_8>"
+# define FDF_ROT_Y_R	"rot_y_down: <num_5>"
+# define FDF_ROT_Z_L	"rot_z_left: <num_7>"
+# define FDF_ROT_Z_R	"rot_z_right: <num_9>"
+
+# define FDF_RESET_IMG	"default: <space>"
 
 /*
 **ERRORS
@@ -218,22 +240,29 @@ typedef struct		s_copy
 	float			scale;
 }					t_copy;
 
+struct				s_menu
+{
+	int				color;
+	BYTE			flag_menu;
+};
 
 typedef struct		s_map
 {
-	t_pixel			*map;
-	t_copy			copy_map;
 	struct s_rad	rad;
+	t_copy			copy_map;
+	struct s_shift	shift;
+	int				**height_not_zero;
+	t_pixel			*map;
 	size_t			max_x;
 	size_t			max_y;
 	float			scale;
-	struct s_shift	shift;
-	int				**height_not_zero;
+	BYTE			flag_menu;
 }					t_map;
 
 typedef struct		s_mlx
 {
 	t_map				map;
+	struct s_menu		menu;
 	struct s_ptr		mlx_ptr;
 	struct s_cfg_image	cfg_image;
 	int					*img;
@@ -332,5 +361,6 @@ void				fdf_in_window(t_map *map);
 void				fdf_collect_height_not_zero(t_map *map);
 int					fdf_gradient(t_pixel *beg, t_pixel *curr, t_pixel *end,
 								struct s_delta *delta);
+void				fdf_menu(t_mlx *mlx);
 
 #endif
