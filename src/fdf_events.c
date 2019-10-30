@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 22:41:37 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/30 16:17:45 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/30 16:43:26 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static int	key_press(int key, t_mlx *mlx)
 {
 	if (key == FDF_ESC)
 		exit(EXIT_SUCCESS);
+	// if (CHK_HEIGHT(key))
+	// 	fdf_event_height(key, mlx->map.)
 	else if (CHK_SCALE(key))
 		fdf_event_scale(key, &mlx->map.scale);
 	else if (CHK_SHIFT(key))

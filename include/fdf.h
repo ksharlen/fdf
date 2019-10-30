@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:17:24 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/30 16:17:10 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/30 16:41:11 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,9 @@
 # define FDF_NUM_8 KEY_NUM_8
 # define FDF_NUM_9 KEY_NUM_9
 
+# define FDF_UP_ARROW	KEY_UP_ARROW
+# define FDF_DOWN_ARROW	KEY_DOWN_ARROW
+
 /*
 **MOUSE
 */
@@ -117,6 +120,7 @@
 
 # define CHK_SCALE(key) ((key) == FDF_NUM_KEY_PLS || (key) == FDF_NUM_KEY_SUB)
 # define CHK_SHIFT(key) (PRS_A(key) || PRS_S(key) || PRS_D(key) || PRS_W(key))
+# define CHK_HEIGHT(key) ((key) == FDF_UP_ARROW || (key) == FDF_DOWN_ARROW)
 
 /*
 **ERRORS
@@ -200,6 +204,11 @@ struct				s_shift
 	int32_t	shift_y;
 };
 
+// typedef struct		s_bonus
+// {
+// 	int				**height_not_zero;
+// }					t_bonus;
+
 typedef struct		s_map
 {
 	t_pixel			*map;
@@ -208,6 +217,7 @@ typedef struct		s_map
 	size_t			max_y;
 	float			scale;
 	struct s_shift	shift;
+	int				**height_not_zero;
 }					t_map;
 
 typedef struct		s_mlx
@@ -294,5 +304,10 @@ void				fdf_scale_map(t_map *map);
 void				fdf_zooming(t_map *map, const float zoom);
 void				fdf_out_window(t_map *map);
 void				fdf_in_window(t_map *map);
+
+/*
+**BONUS
+*/
+void				fdf_collect_height_not_zero(t_map *map);
 
 #endif
