@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 22:44:28 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/30 22:08:49 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/31 00:12:52 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,38 @@ static t_pixel		fdf_rot(t_pixel *elem, struct s_rad *rad,
 	float *scale, struct s_shift *shift)
 {
 	t_pixel	coord;
+	float x_x;
+	float x_y;
+	float x_z;
 
-	coord.x = (int)round(((X * cos(RAD_Y) + (-Y * sin(RAD_X) + Z * cos(RAD_X))
-			* sin(RAD_Y)) * cos(RAD_Z) - (Y * cos(RAD_X) + Z * sin(RAD_X)) *
-				sin(RAD_Z)) * *scale) + SHIFT_X;
-	coord.y = (int)round((-(X * cos(RAD_Y) + (-Y * sin(RAD_X) + Z * cos(RAD_X))
-			* sin(RAD_Y)) * sin(RAD_Z) + (Y * cos(RAD_X) + Z * sin(RAD_X)) *
-				cos(RAD_Z)) * *scale) + SHIFT_Y;
+	float y_x;
+	float y_y;
+	float y_z;
+
+	float z_x;
+	float z_y;
+	float z_z;
+
+	x_x = elem->x;
+	x_y = elem->y * cos(RAD_X) + elem->z * sin(RAD_X);
+	x_z = -elem->y * sin(RAD_X) + elem->z * cos(RAD_X);
+
+	y_x = x_x * cos(RAD_Y) + x_z * sin(RAD_Y);
+	y_y = x_y;
+	y_z = -x_x * sin(RAD_Y) + x_z * cos(RAD_Y);
+
+	z_x = y_x * cos(RAD_Z) - y_y * sin(RAD_Z);
+	z_y = y_x * sin(RAD_Z) + y_y * cos(RAD_Z);
+	z_z = y_z;
+
+	coord.x = (int)round(z_x * (*scale)) + SHIFT_X;
+	coord.y = (int)round(z_y * (*scale)) + SHIFT_Y;
+	// coord.x = (int)round(((X * cos(RAD_Y) + (-Y * sin(RAD_X) + Z * cos(RAD_X))
+	// 		* sin(RAD_Y)) * cos(RAD_Z) - (Y * cos(RAD_X) + Z * sin(RAD_X)) *
+	// 			sin(RAD_Z)) * *scale) + SHIFT_X;
+	// coord.y = (int)round((-(X * cos(RAD_Y) + (-Y * sin(RAD_X) + Z * cos(RAD_X))
+	// 		* sin(RAD_Y)) * sin(RAD_Z) + (Y * cos(RAD_X) + Z * sin(RAD_X)) *
+	// 			cos(RAD_Z)) * *scale) + SHIFT_Y;
 	coord.color = elem->color;
 	return (coord);
 }
