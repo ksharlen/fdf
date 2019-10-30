@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 16:31:41 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/30 16:51:39 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/30 17:58:23 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static size_t	num_not_zero_height(t_pixel *pixel, size_t	size_map)
 	return (len);
 }
 
-static void		collect_height(t_pixel *map, size_t	size_map, int **height_not_zero)
+void			collect_height(t_pixel *map, size_t	size_map, int **height_not_zero)
 {
 	size_t	i;
 	size_t	j;

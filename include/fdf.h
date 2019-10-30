@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:17:24 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/30 17:29:31 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/30 17:58:35 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -286,6 +286,7 @@ void				fdf_parsing_map(t_listfdf *beg, t_map *map);
 void				fdf_create_map(t_listfdf *beg, t_map *map);
 void				fdf_map_to_img(t_map *map, int *img);
 void				fdf_reset_map(t_map *map);
+void				collect_height(t_pixel *map, size_t	size_map, int **height_not_zero);
 
 /*
 **WINDOW

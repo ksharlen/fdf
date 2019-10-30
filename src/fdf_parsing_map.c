@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 19:48:23 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/30 17:54:09 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/30 17:59:22 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,30 +59,16 @@ static void		fdf_init_rad(struct s_rad *rad)
 	RAD_Z = 0.0;
 }
 
-// static void		print_map(t_pixel *map, size_t size_map)
-// {
-// 	size_t	i;
-
-// 	i = 0;
-// 	while (i < size_map)
-// 	{
-// 		printf("x: %d	y: %d\n", map[i].x, map[i].y);
-// 		++i;
-// 	}
-// 	exit(EXIT_FAILURE);
-// }
-
 void			fdf_reset_map(t_map *map)
 {
 	fdf_init_rad(&map->rad);
 	map->shift.shift_x = FDF_DFLT_SHIFT_X;
 	map->shift.shift_y = FDF_DFLT_SHIFT_Y;
 	map->scale = map->copy_map.scale;
-	// map->scale = FDF_DFLT_SCALE;
 	ft_memdel((void **)&map->map);
 	MAP = map->copy_map.map;
 	map->copy_map.map = ft_memdup(MAP, (MAX_X * MAX_Y) * sizeof(t_pixel));
-	// printf("here\n");
+	collect_height(MAP, MAX_X * MAX_Y, map->height_not_zero);
 }
 
 void			fdf_parsing_map(t_listfdf *beg, t_map *map)
@@ -99,6 +85,5 @@ void			fdf_parsing_map(t_listfdf *beg, t_map *map)
 	fdf_collect_height_not_zero(map);
 	fdf_map_align(map);
 	map->copy_map.map = ft_memdup(MAP, MAX_X * MAX_Y * sizeof(t_pixel));
-	// print_map(map->copy_map.map, MAX_X * MAX_Y);
 	map->copy_map.scale = map->scale;
 }
