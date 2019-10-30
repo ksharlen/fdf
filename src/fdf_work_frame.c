@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 22:44:28 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/30 17:45:37 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/30 19:19:56 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,13 @@ static void			parse_line(size_t i, int *img, t_map *map)
 		{
 			next = fdf_rot(&MAP[i * MAX_X + j + 1], &map->rad,
 							&map->scale, &map->shift);
-			fdf_line_create(img, curr, &next);
+			fdf_line_create(img, curr, &next, curr);
 		}
 		if (i)
 		{
 			up = fdf_rot(&MAP[(i - 1) * MAX_X + j], &map->rad,
 							&map->scale, &map->shift);
-			fdf_line_create(img, curr, &up);
+			fdf_line_create(img, curr, &up, curr);
 		}
 		++j;
 	}

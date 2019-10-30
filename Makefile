@@ -6,7 +6,7 @@
 #    By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/18 08:27:12 by ksharlen          #+#    #+#              #
-#    Updated: 2019/10/30 16:42:27 by ksharlen         ###   ########.fr        #
+#    Updated: 2019/10/30 19:20:15 by ksharlen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,8 @@ SRCS				:= main.c\
 							fdf_events.c\
 							fdf_zoom.c\
 							fdf_event_key_press.c\
-							fdf_collect_height_not_zero.c
+							fdf_collect_height_not_zero.c\
+							fdf_gradient.c
 
 OBJS				:= $(SRCS:.c=.o)
 DIRS_INCLUDE		:= $(DIR_INCLUDE_LIBFT) $(DIR_INCLUDE_FDF) $(DIR_INCLUDE_MLX) $(DIR_INCLUDE_LINAL)

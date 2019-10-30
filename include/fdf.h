@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:17:24 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/30 17:58:35 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/30 19:36:29 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,16 +200,17 @@ struct				s_rad
 	float	rad_z;
 };
 
+struct				s_delta
+{
+	int dx;
+	int dy;
+};
+
 struct				s_shift
 {
 	int32_t	shift_x;
 	int32_t	shift_y;
 };
-
-// typedef struct		s_bonus
-// {
-// 	int				**height_not_zero;
-// }					t_bonus;
 
 typedef struct		s_copy
 {
@@ -253,12 +254,18 @@ struct				s_gnl
 
 struct				s_line_create
 {
-	int dx;
-	int sx;
-	int sy;
-	int dy;
-	int err;
-	int e2;
+	struct s_delta	delta;
+	int				sx;
+	int				sy;
+	int				err;
+	int				e2;
+};
+
+struct				s_color
+{
+	int red;
+	int green;
+	int blue;
 };
 
 /*
@@ -311,7 +318,8 @@ void				fdf_err_ext(const int err);
 /*
 **WORK_FRAME
 */
-void				fdf_line_create(int *img, t_pixel beg, t_pixel *end);
+void				fdf_line_create(int *img, t_pixel beg,
+									t_pixel *end, t_pixel begin);
 void				fdf_work_frame(t_mlx *mlx);
 void				fdf_fit_screen_map(t_map *map);
 void				fdf_scale_map(t_map *map);
@@ -323,5 +331,7 @@ void				fdf_in_window(t_map *map);
 **BONUS
 */
 void				fdf_collect_height_not_zero(t_map *map);
+int					fdf_gradient(t_pixel *beg, t_pixel *curr, t_pixel *end,
+								struct s_delta *delta);
 
 #endif
