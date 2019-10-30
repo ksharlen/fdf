@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:17:24 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/30 19:36:29 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/30 19:43:49 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,7 +223,6 @@ typedef struct		s_map
 {
 	t_pixel			*map;
 	t_copy			copy_map;
-	// t_pixel			*copy_map;
 	struct s_rad	rad;
 	size_t			max_x;
 	size_t			max_y;
