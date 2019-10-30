@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 22:41:37 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/28 23:25:11 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/30 16:17:45 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,10 @@ static int	key_press(int key, t_mlx *mlx)
 {
 	if (key == FDF_ESC)
 		exit(EXIT_SUCCESS);
-	else if (key == FDF_NUM_KEY_PLS)
-		mlx->map.scale *= FDF_ZOOM_IN;
-	else if (key == FDF_NUM_KEY_SUB)
-		mlx->map.scale *= FDF_ZOOM_OUT;
-	else if (key == FDF_A)
-		mlx->map.shift.shift_x -= FDF_SHIFT;
-	else if (key == FDF_D)
-		mlx->map.shift.shift_x += FDF_SHIFT;
-	else if (key == FDF_W)
-		mlx->map.shift.shift_y -= FDF_SHIFT;
-	else if (key == FDF_S)
-		mlx->map.shift.shift_y += FDF_SHIFT;
+	else if (CHK_SCALE(key))
+		fdf_event_scale(key, &mlx->map.scale);
+	else if (CHK_SHIFT(key))
+		fdf_event_shift(key, &mlx->map.shift);
 	else if (CHK_ROTATE(key))
 		fdf_event_rad(key, &mlx->map.rad);
 	fdf_work_frame(mlx);

@@ -1,16 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf_work_rot.c                                     :+:      :+:    :+:   */
+/*   fdf_event_key_press.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 20:37:19 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/29 21:38:57 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/30 16:09:39 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+#define SHIFT_X shift->shift_x
+#define SHIFT_Y shift->shift_y
+#define SCALE	*scale
+
+void	fdf_event_scale(int key, float *scale)
+{
+	if (key == FDF_NUM_KEY_PLS)
+		SCALE *= FDF_ZOOM_IN;
+	else if (key == FDF_NUM_KEY_SUB)
+		SCALE *= FDF_ZOOM_OUT;
+}
+
+void	fdf_event_shift(int key, struct s_shift *shift)
+{
+	if (key == FDF_A)
+		SHIFT_X -= FDF_SHIFT;
+	else if (key == FDF_D)
+		SHIFT_X += FDF_SHIFT;
+	else if (key == FDF_W)
+		SHIFT_Y -= FDF_SHIFT;
+	else if (key == FDF_S)
+		SHIFT_Y += FDF_SHIFT;
+}
 
 void	fdf_event_rad(int key, struct s_rad *rad)
 {

@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 20:55:56 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/29 21:57:30 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/30 15:53:43 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #define X2 end->x
 #define Y2 end->y
 
-static int		check_pix_in_to_win(t_coord *coor)
+static int		check_pix_in_to_win(t_pixel *coor)
 {
 	if ((coor->x < WIN_X) && (coor->y < WIN_Y) &&
 		((coor->x >= 0) && (coor->y >= 0)))
@@ -27,7 +27,7 @@ static int		check_pix_in_to_win(t_coord *coor)
 	return (FAILURE);
 }
 
-void			fdf_line_create(int *img, t_coord beg, t_coord *end)
+void			fdf_line_create(int *img, t_pixel beg, t_pixel *end)
 {
 	struct s_line_create brain;
 
@@ -39,7 +39,7 @@ void			fdf_line_create(int *img, t_coord beg, t_coord *end)
 	while (FDF_INF)
 	{
 		if (check_pix_in_to_win(&beg) == SUCCESS)
-			*(img + WIN_X * beg.y + beg.x) = FDF_DFLT_COLOR;
+			*(img + WIN_X * beg.y + beg.x) = beg.color;
 		if (beg.x == end->x && beg.y == end->y)
 			break ;
 		brain.e2 = 2 * brain.err;

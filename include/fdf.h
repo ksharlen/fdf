@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:17:24 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/29 22:02:09 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/30 16:17:10 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,11 +101,22 @@
 # define FDF_MIDDLE(val) (val) / 2
 # define FDF_GET_MAX_X(val, line) ((val) = ft_num_words((line), (PART_STR)))
 # define FDF_GET_MAX_Y(val, beg) (val) = (list_size(beg))
+
+/*
+**MACRO_PRESS
+*/
+# define PRS_A(key) ((key) == FDF_A)
+# define PRS_S(key) ((key) == FDF_S)
+# define PRS_D(key) ((key) == FDF_D)
+# define PRS_W(key) ((key) == FDF_W)
+
 # define CHK_ROT_X(key) ((key) == FDF_NUM_4 || (key) == FDF_NUM_6)
 # define CHK_ROT_Y(key) ((key) == FDF_NUM_8 || (key) == FDF_NUM_5)
 # define CHK_ROT_Z(key) ((key) == FDF_NUM_7 || (key) == FDF_NUM_9)
-
 # define CHK_ROTATE(key) (CHK_ROT_X(key) || CHK_ROT_Y(key) || CHK_ROT_Z(key))
+
+# define CHK_SCALE(key) ((key) == FDF_NUM_KEY_PLS || (key) == FDF_NUM_KEY_SUB)
+# define CHK_SHIFT(key) (PRS_A(key) || PRS_S(key) || PRS_D(key) || PRS_W(key))
 
 /*
 **ERRORS
@@ -263,6 +274,9 @@ void				fdf_work_window(t_mlx *mlx);
 **EVENTS
 */
 void				fdf_events(t_mlx *mlx);
+void				fdf_event_scale(int key, float *scale);
+void				fdf_event_shift(int key, struct s_shift *shift);
+void				fdf_event_rad(int key, struct s_rad *rad);
 
 /*
 **ERRORS
@@ -273,13 +287,12 @@ void				fdf_err_ext(const int err);
 /*
 **WORK_FRAME
 */
-void				fdf_line_create(int *img, t_coord beg, t_coord *end);
+void				fdf_line_create(int *img, t_pixel beg, t_pixel *end);
 void				fdf_work_frame(t_mlx *mlx);
 void				fdf_fit_screen_map(t_map *map);
 void				fdf_scale_map(t_map *map);
 void				fdf_zooming(t_map *map, const float zoom);
 void				fdf_out_window(t_map *map);
 void				fdf_in_window(t_map *map);
-void				fdf_event_rad(int key, struct s_rad *rad);
 
 #endif

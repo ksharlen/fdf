@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 22:44:28 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/29 21:51:14 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/30 15:52:07 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@
 #define SHIFT_X shift->shift_x
 #define SHIFT_Y shift->shift_y
 
-static t_coord		fdf_rot(t_pixel *elem, struct s_rad *rad,
+static t_pixel		fdf_rot(t_pixel *elem, struct s_rad *rad,
 	float *scale, struct s_shift *shift)
 {
-	t_coord	coord;
+	t_pixel	coord;
 
 	coord.x = (int)round(((X * cos(RAD_Y) + (-Y * sin(RAD_X) + Z * cos(RAD_X))
 			* sin(RAD_Y)) * cos(RAD_Z) - (Y * cos(RAD_X) + Z * sin(RAD_X)) *
@@ -37,14 +37,15 @@ static t_coord		fdf_rot(t_pixel *elem, struct s_rad *rad,
 	coord.y = (int)round((-(X * cos(RAD_Y) + (-Y * sin(RAD_X) + Z * cos(RAD_X))
 			* sin(RAD_Y)) * sin(RAD_Z) + (Y * cos(RAD_X) + Z * sin(RAD_X)) *
 				cos(RAD_Z)) * *scale) + SHIFT_Y;
+	coord.color = elem->color;
 	return (coord);
 }
 
 static void			parse_line(size_t i, int *img, t_map *map)
 {
-	t_coord	curr;
-	t_coord	next;
-	t_coord	up;
+	t_pixel	curr;
+	t_pixel	next;
+	t_pixel	up;
 	size_t	j;
 
 	j = 0;
