@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 19:48:23 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/30 16:46:16 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/30 16:51:46 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,5 @@ void			fdf_parsing_map(t_listfdf *beg, t_map *map)
 	map->shift.shift_y = FDF_DFLT_SHIFT_Y;
 	fdf_fit_screen_map(map);
 	fdf_collect_height_not_zero(map);
-	print_height(map->height_not_zero);
-	exit(EXIT_FAILURE);
 	fdf_map_align(map);
 }

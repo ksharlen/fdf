@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 20:37:19 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/30 16:09:39 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/30 17:02:05 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,19 @@
 #define SHIFT_X shift->shift_x
 #define SHIFT_Y shift->shift_y
 #define SCALE	*scale
+
+void	fdf_event_height(int key, int **height_not_zero)
+{
+	int value;
+
+	value = (key == FDF_UP_ARROW ? 1 : -1);
+	while (*height_not_zero)
+	{
+		if (**height_not_zero)
+			**height_not_zero += value;
+		++height_not_zero;
+	}
+}
 
 void	fdf_event_scale(int key, float *scale)
 {

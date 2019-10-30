@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:17:24 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/30 16:41:11 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/30 16:51:27 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -287,6 +287,7 @@ void				fdf_events(t_mlx *mlx);
 void				fdf_event_scale(int key, float *scale);
 void				fdf_event_shift(int key, struct s_shift *shift);
 void				fdf_event_rad(int key, struct s_rad *rad);
+void				fdf_event_height(int key, int **height_not_zero);
 
 /*
 **ERRORS
