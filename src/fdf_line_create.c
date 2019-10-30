@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 20:55:56 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/30 19:35:20 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/30 22:06:53 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ static int		check_pix_in_to_win(t_pixel *coor)
 	return (FAILURE);
 }
 
-void			fdf_line_create(int *img, t_pixel beg, t_pixel *end, t_pixel begin)
+void			fdf_line_create(int *img, t_pixel beg,
+	t_pixel *end, t_pixel begin)
 {
 	struct s_line_create brain;
 
@@ -39,7 +40,7 @@ void			fdf_line_create(int *img, t_pixel beg, t_pixel *end, t_pixel begin)
 	while (FDF_INF)
 	{
 		if (check_pix_in_to_win(&beg) == SUCCESS)
-			*(img + WIN_X * beg.y + beg.x) = fdf_gradient(&begin, &beg, end, &brain.delta);
+			FDF_PIXEL_COLOR = fdf_gradient(&begin, &beg, end, &brain.delta);
 		if (beg.x == end->x && beg.y == end->y)
 			break ;
 		brain.e2 = 2 * brain.err;

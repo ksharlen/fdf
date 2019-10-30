@@ -6,13 +6,13 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 16:31:41 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/30 17:58:23 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/30 22:03:22 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static size_t	num_not_zero_height(t_pixel *pixel, size_t	size_map)
+static size_t	num_not_zero_height(t_pixel *pixel, size_t size_map)
 {
 	size_t	i;
 	size_t	len;
@@ -28,7 +28,8 @@ static size_t	num_not_zero_height(t_pixel *pixel, size_t	size_map)
 	return (len);
 }
 
-void			collect_height(t_pixel *map, size_t	size_map, int **height_not_zero)
+void			collect_height(t_pixel *map, size_t size_map,
+	int **height_not_zero)
 {
 	size_t	i;
 	size_t	j;
@@ -43,7 +44,7 @@ void			collect_height(t_pixel *map, size_t	size_map, int **height_not_zero)
 	}
 }
 
-void	fdf_collect_height_not_zero(t_map *map)
+void			fdf_collect_height_not_zero(t_map *map)
 {
 	size_t	len_height_not_zero;
 

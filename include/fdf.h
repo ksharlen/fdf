@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:17:24 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/30 21:57:58 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/30 22:06:44 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@
 # define FDF_ENDI mlx->FDF_CFG_IMG.endian
 # define FDF_LAST_ELEM_MAP MAX_X * MAX_Y - 1
 # define FDF_CHK_FILE NULL
+# define FDF_PIXEL_COLOR *(img + WIN_X * beg.y + beg.x)
 
 /*
 **KEY_MAP_FOR_FDF

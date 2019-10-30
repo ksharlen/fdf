@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 19:48:23 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/30 21:41:00 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/30 22:05:30 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #define RAD_X rad->rad_x
 #define RAD_Y rad->rad_y
 #define RAD_Z rad->rad_z
-
 
 static void		valid_map(t_listfdf *beg)
 {

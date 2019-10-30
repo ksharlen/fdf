@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 18:58:10 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/30 19:36:55 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/30 22:03:37 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ static int		get_light(int beg, int end, double *percent)
 	return ((int)((1 - (*percent)) * beg + (*percent) * end));
 }
 
-int				fdf_gradient(t_pixel *beg, t_pixel *curr, t_pixel *end, struct s_delta *delta)
+int				fdf_gradient(t_pixel *beg, t_pixel *curr,
+	t_pixel *end, struct s_delta *delta)
 {
 	struct s_color	color;
 	double			percent;

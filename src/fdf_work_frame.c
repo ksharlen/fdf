@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 22:44:28 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/30 21:07:00 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/30 22:08:49 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,4 +89,7 @@ void				fdf_work_frame(t_mlx *mlx)
 	mlx_put_image_to_window(MLX_PTR, MLX_WIN, MLX_P_IMG, FDF_BEG_X, FDF_BEG_Y);
 	if (mlx->menu.flag_menu)
 		fdf_menu(mlx);
+	else
+		mlx_string_put(MLX_PTR, MLX_WIN, 0, 0,
+			FDF_DFLT_COLOR, "Press <v> for menu");
 }
