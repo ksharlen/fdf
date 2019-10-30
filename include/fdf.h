@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:17:24 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/30 16:51:27 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/30 17:29:31 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@
 
 # define FDF_UP_ARROW	KEY_UP_ARROW
 # define FDF_DOWN_ARROW	KEY_DOWN_ARROW
+
+# define FDF_SPACE KEY_SPACE
 
 /*
 **MOUSE
@@ -209,9 +211,18 @@ struct				s_shift
 // 	int				**height_not_zero;
 // }					t_bonus;
 
+typedef struct		s_copy
+{
+	t_pixel			*map;
+	float			scale;
+}					t_copy;
+
+
 typedef struct		s_map
 {
 	t_pixel			*map;
+	t_copy			copy_map;
+	// t_pixel			*copy_map;
 	struct s_rad	rad;
 	size_t			max_x;
 	size_t			max_y;
@@ -274,6 +285,7 @@ t_listfdf			*fdf_read_file(const char *filename);
 void				fdf_parsing_map(t_listfdf *beg, t_map *map);
 void				fdf_create_map(t_listfdf *beg, t_map *map);
 void				fdf_map_to_img(t_map *map, int *img);
+void				fdf_reset_map(t_map *map);
 
 /*
 **WINDOW
