@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:17:24 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/30 22:06:44 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/30 22:32:22 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,21 +51,21 @@
 /*
 **FDF_ALIAS
 */
-# define FDF_INF 1
-# define MAP map->map
-# define MAX_X map->max_x
-# define MAX_Y map->max_y
-# define MLX_PTR mlx->mlx_ptr.mlx_ptr
-# define MLX_WIN mlx->mlx_ptr.mlx_win
-# define MLX_P_IMG mlx->mlx_ptr.mlx_image
-# define MLX_IMG	mlx->img
-# define FDF_CFG_IMG cfg_image
-# define FDF_BPP mlx->FDF_CFG_IMG.bits_per_pixel
-# define FDF_SL mlx->FDF_CFG_IMG.size_line
-# define FDF_ENDI mlx->FDF_CFG_IMG.endian
-# define FDF_LAST_ELEM_MAP MAX_X * MAX_Y - 1
-# define FDF_CHK_FILE NULL
-# define FDF_PIXEL_COLOR *(img + WIN_X * beg.y + beg.x)
+# define FDF_INF			1
+# define MAP				map->map
+# define MAX_X				map->max_x
+# define MAX_Y				map->max_y
+# define MLX_PTR 			mlx->mlx_ptr.mlx_ptr
+# define MLX_WIN 			mlx->mlx_ptr.mlx_win
+# define MLX_P_IMG			mlx->mlx_ptr.mlx_image
+# define MLX_IMG			mlx->img
+# define FDF_CFG_IMG		cfg_image
+# define FDF_BPP			mlx->FDF_CFG_IMG.bits_per_pixel
+# define FDF_SL				mlx->FDF_CFG_IMG.size_line
+# define FDF_ENDI			mlx->FDF_CFG_IMG.endian
+# define FDF_LAST_ELEM_MAP	MAX_X * MAX_Y - 1
+# define FDF_CHK_FILE		NULL
+# define FDF_PIXEL_COLOR	*(img + WIN_X * beg.y + beg.x)
 
 /*
 **KEY_MAP_FOR_FDF
