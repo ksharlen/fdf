@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 20:37:19 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/31 13:21:17 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/31 13:53:29 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,19 @@ void	fdf_event_projection(int key, struct s_rad *rad)
 	}
 }
 
-void	fdf_event_height(int key, int **height_not_zero)
+void	fdf_event_height(int key, struct s_height *height_not_zero,
+	size_t size_height)
 {
-	int value;
+	size_t	i;
+	int		value;
 
+	i = 0;
 	value = (key == FDF_UP_ARROW ? 1 : -1);
-	while (*height_not_zero)
+	while (i < size_height)
 	{
-		if (**height_not_zero)
-			**height_not_zero += value;
-		++height_not_zero;
+		if (height_not_zero[i].z)
+			*height_not_zero[i].z += value;
+		++i;
 	}
 }
 

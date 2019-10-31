@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:17:24 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/31 13:32:40 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/31 13:54:41 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@
 # define FDF_TITTLE	"fdf"
 # define WIN_X		2048
 # define WIN_Y 		1100
-# define FDF_DFLT_COLOR	0x00ff00
+# define FDF_DFLT_COLOR	0x0000ff
+# define FDF_HEIGHT_COLOR 0xC71585
 # define FDF_DFLT_SCALE	1.0
 # define FDF_DFLT_SHIFT_X ((WIN_X) / 2)
 # define FDF_DFLT_SHIFT_Y ((WIN_Y) / 2)
@@ -255,12 +256,20 @@ struct				s_menu
 	BYTE			flag_menu;
 };
 
+struct				s_height
+{
+	int	*z;
+	int	*color;
+};
+
 typedef struct		s_map
 {
 	struct s_rad	rad;
 	t_copy			copy_map;
 	struct s_shift	shift;
-	int				**height_not_zero;
+	struct s_height	*height_not_zero;
+	size_t			size_height_not_zero;
+	// int				**height_not_zero;
 	t_pixel			*map;
 	size_t			max_x;
 	size_t			max_y;
@@ -329,7 +338,8 @@ void				fdf_parsing_map(t_listfdf *beg, t_map *map);
 void				fdf_create_map(t_listfdf *beg, t_map *map);
 void				fdf_map_to_img(t_map *map, int *img);
 void				fdf_reset_map(t_map *map);
-void				collect_height(t_pixel *map, size_t	size_map, int **height_not_zero);
+void				collect_height(t_pixel *map, size_t	size_map,
+	struct s_height *height_not_zero);
 
 /*
 **WINDOW
@@ -343,7 +353,8 @@ void				fdf_events(t_mlx *mlx);
 void				fdf_event_scale(int key, float *scale);
 void				fdf_event_shift(int key, struct s_shift *shift);
 void				fdf_event_rad(int key, struct s_rad *rad);
-void				fdf_event_height(int key, int **height_not_zero);
+void				fdf_event_height(int key, struct s_height *height_not_zero,
+	size_t size_height);
 void				fdf_event_projection(int key, struct s_rad *rad);
 
 /*
