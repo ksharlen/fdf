@@ -6,18 +6,11 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 20:55:56 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/30 22:06:53 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/31 15:02:01 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-#define ABS(x) ((x) >= 0 ? (x) : -(x))
-
-#define X1 beg->x
-#define Y1 beg->y
-#define X2 end->x
-#define Y2 end->y
 
 static int		check_pix_in_to_win(t_pixel *coor)
 {

@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 22:44:28 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/31 14:13:07 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/31 15:13:28 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,19 @@
 #define Y elem->y
 #define Z elem->z
 
-#define RAD_X rad->rad_x
-#define RAD_Y rad->rad_y
-#define RAD_Z rad->rad_z
-
-#define SHIFT_X shift->shift_x
-#define SHIFT_Y shift->shift_y
-
 static t_pixel		fdf_rot(t_pixel *elem, struct s_rad *rad,
 	float *scale, struct s_shift *shift)
 {
 	t_pixel	coord;
 
-	coord.x = (int)round(((X * cos(RAD_Y) + (-Y * sin(RAD_X) + Z * cos(RAD_X))
-			* sin(RAD_Y)) * cos(RAD_Z) - (Y * cos(RAD_X) + Z * sin(RAD_X)) *
-				sin(RAD_Z)) * *scale) + SHIFT_X;
-	coord.y = (int)round(((X * cos(RAD_Y) + (-Y * sin(RAD_X) + Z * cos(RAD_X))
-			* sin(RAD_Y)) * sin(RAD_Z) + (Y * cos(RAD_X) + Z * sin(RAD_X)) *
-				cos(RAD_Z)) * *scale) + SHIFT_Y;
+	coord.x = (int)round(((X * cos(FDF_RAD_Y) + (-Y * sin(FDF_RAD_X) + Z *
+		cos(FDF_RAD_X)) * sin(FDF_RAD_Y)) * cos(FDF_RAD_Z) -
+			(Y * cos(FDF_RAD_X) + Z * sin(FDF_RAD_X)) *
+				sin(FDF_RAD_Z)) * *scale) + FDF_SHIFT_X;
+	coord.y = (int)round(((X * cos(FDF_RAD_Y) + (-Y * sin(FDF_RAD_X) + Z *
+		cos(FDF_RAD_X)) * sin(FDF_RAD_Y)) * sin(FDF_RAD_Z) +
+			(Y * cos(FDF_RAD_X) + Z * sin(FDF_RAD_X)) * cos(FDF_RAD_Z)) *
+				*scale) + FDF_SHIFT_Y;
 	coord.color = elem->color;
 	return (coord);
 }

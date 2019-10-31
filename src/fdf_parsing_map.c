@@ -6,15 +6,11 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 19:48:23 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/31 13:57:22 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/31 15:02:16 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-#define RAD_X rad->rad_x
-#define RAD_Y rad->rad_y
-#define RAD_Z rad->rad_z
 
 static void		valid_map(t_listfdf *beg)
 {
@@ -53,9 +49,9 @@ static void		fdf_map_align(t_map *map)
 
 void			fdf_init_rad(struct s_rad *rad)
 {
-	RAD_X = 0.0;
-	RAD_Y = 0.0;
-	RAD_Z = 0.0;
+	FDF_RAD_X = 0.0;
+	FDF_RAD_Y = 0.0;
+	FDF_RAD_Z = 0.0;
 }
 
 void			fdf_reset_map(t_map *map)

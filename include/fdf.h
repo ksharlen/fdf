@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:17:24 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/31 14:48:51 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/31 15:14:48 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@
 # define FDF_ZOOM_IN	1.1
 
 # define FDF_SHIFT		13
+# define FDF_SHIFT_X	shift->shift_x
+# define FDF_SHIFT_Y	shift->shift_y
 
 # define FDF_ROT_LEFT		-(M_PI / 128)
 # define FDF_ROT_RIGHT		M_PI / 128
@@ -67,6 +69,9 @@
 # define FDF_LAST_ELEM_MAP	MAX_X * MAX_Y - 1
 # define FDF_CHK_FILE		NULL
 # define FDF_PIXEL_COLOR	*(img + WIN_X * beg.y + beg.x)
+# define FDF_RAD_X			rad->rad_x
+# define FDF_RAD_Y			rad->rad_y
+# define FDF_RAD_Z			rad->rad_z
 
 /*
 **KEY_MAP_FOR_FDF
@@ -273,7 +278,6 @@ struct				s_height
 	int	*z;
 	int	*color;
 };
-
 
 /*
 **LIST FOR READ_FILE

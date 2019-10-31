@@ -6,12 +6,11 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 20:21:55 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/31 14:35:39 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/31 15:12:11 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
 
 static void	fdf_in_window(t_map *map)
 {
