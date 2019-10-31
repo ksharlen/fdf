@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:17:24 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/31 15:14:48 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/31 15:32:50 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@
 */
 # define FDF_MIDDLE(val) (val) / 2
 # define FDF_GET_MAX_X(val, line) ((val) = ft_num_words((line), (PART_STR)))
-# define FDF_GET_MAX_Y(val, beg) (val) = (list_size(beg))
+# define FDF_GET_MAX_Y(val, beg) (val) = (fdf_list_size(beg))
 
 /*
 **MACRO_PRESS
@@ -349,10 +349,10 @@ int					fdf_valid_arg(const int argc, char *const argv[]);
 /*
 **FDF_LIST
 */
-void				list_add_end(t_listfdf **beg, char *line);
-t_listfdf			*list_create(char *line);
-void				list_delete(t_listfdf **beg);
-size_t				list_size(t_listfdf *beg);
+void				fdf_list_add_end(t_listfdf **beg, char *line);
+t_listfdf			*fdf_list_create(char *line);
+void				fdf_list_delete(t_listfdf **beg);
+size_t				fdf_list_size(t_listfdf *beg);
 
 /*
 **READ_FILE
@@ -366,7 +366,7 @@ void				fdf_parsing_map(t_listfdf *beg, t_map *map);
 void				fdf_create_map(t_listfdf *beg, t_map *map);
 void				fdf_map_to_img(t_map *map, int *img);
 void				fdf_reset_map(t_map *map);
-void				collect_height(t_pixel *map, size_t	size_map,
+void				fdf_collect_height(t_pixel *map, size_t	size_map,
 	struct s_height *height_not_zero);
 
 /*

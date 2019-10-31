@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 16:31:41 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/31 14:15:12 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/31 15:33:28 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static size_t	num_not_zero_height(t_pixel *pixel, size_t size_map)
 	return (len);
 }
 
-void			collect_height(t_pixel *map, size_t size_map,
+void			fdf_collect_height(t_pixel *map, size_t size_map,
 	struct s_height *height_not_zero)
 {
 	size_t	i;
@@ -56,5 +56,5 @@ void			fdf_collect_height_not_zero(t_map *map)
 	map->size_height_not_zero = num_not_zero_height(map->map, MAX_X * MAX_Y);
 	CHK_NULL_PTR(map->height_not_zero = (struct s_height *)ft_memalloc(sizeof(
 		struct s_height) * (map->size_height_not_zero + 1)), E_MALLOC, P_N);
-	collect_height(MAP, MAX_X * MAX_Y, map->height_not_zero);
+	fdf_collect_height(MAP, MAX_X * MAX_Y, map->height_not_zero);
 }

@@ -6,13 +6,13 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 20:21:55 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/31 15:12:11 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/31 15:32:09 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	fdf_in_window(t_map *map)
+static void	in_window(t_map *map)
 {
 	t_pixel	*last_elem;
 	t_coord	need_zoom;
@@ -25,7 +25,7 @@ static void	fdf_in_window(t_map *map)
 		map->scale = map->scale * FDF_ZOOM_IN;
 }
 
-static void	fdf_out_window(t_map *map)
+static void	out_window(t_map *map)
 {
 	t_coord	max_map;
 
@@ -44,7 +44,7 @@ void		fdf_fit_screen_map(t_map *map)
 	max_coor_map.y = MAP[FDF_LAST_ELEM_MAP].y;
 	if (max_coor_map.x < (ssize_t)(WIN_X / 2) &&
 		max_coor_map.y < (ssize_t)(WIN_Y / 2))
-		fdf_in_window(map);
+		in_window(map);
 	else if (max_coor_map.x > WIN_X || max_coor_map.y > WIN_Y)
-		fdf_out_window(map);
+		out_window(map);
 }

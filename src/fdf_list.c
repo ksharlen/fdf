@@ -6,13 +6,13 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 21:50:30 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/17 18:37:23 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/31 15:28:29 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-size_t		list_size(t_listfdf *beg)
+size_t		fdf_list_size(t_listfdf *beg)
 {
 	size_t	list_size;
 
@@ -23,7 +23,7 @@ size_t		list_size(t_listfdf *beg)
 	return (list_size);
 }
 
-void		list_delete(t_listfdf **beg)
+void		fdf_list_delete(t_listfdf **beg)
 {
 	t_listfdf	*curr;
 	t_listfdf	*tmp;
@@ -39,7 +39,7 @@ void		list_delete(t_listfdf **beg)
 	*beg = NULL;
 }
 
-t_listfdf	*list_create(char *line)
+t_listfdf	*fdf_list_create(char *line)
 {
 	t_listfdf	*new;
 
@@ -54,14 +54,14 @@ t_listfdf	*list_create(char *line)
 	return (new);
 }
 
-void		list_add_end(t_listfdf **beg, char *line)
+void		fdf_list_add_end(t_listfdf **beg, char *line)
 {
 	t_listfdf	*new;
 	t_listfdf	*res;
 
 	if (beg)
 	{
-		new = list_create(line);
+		new = fdf_list_create(line);
 		if (*beg)
 		{
 			res = (*beg);

@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 22:44:28 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/31 15:13:28 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/31 15:31:12 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #define Y elem->y
 #define Z elem->z
 
-static t_pixel		fdf_rot(t_pixel *elem, struct s_rad *rad,
+static t_pixel		rot(t_pixel *elem, struct s_rad *rad,
 	float *scale, struct s_shift *shift)
 {
 	t_pixel	coord;
@@ -46,17 +46,17 @@ static void			parse_line(size_t i, int *img, t_map *map)
 	j = 0;
 	while (j < MAX_X)
 	{
-		curr = fdf_rot(&MAP[i * MAX_X + j], &map->rad,
+		curr = rot(&MAP[i * MAX_X + j], &map->rad,
 						&map->scale, &map->shift);
 		if (j + 1 != MAX_X)
 		{
-			next = fdf_rot(&MAP[i * MAX_X + j + 1], &map->rad,
+			next = rot(&MAP[i * MAX_X + j + 1], &map->rad,
 							&map->scale, &map->shift);
 			fdf_line_create(img, curr, &next, curr);
 		}
 		if (i)
 		{
-			up = fdf_rot(&MAP[(i - 1) * MAX_X + j], &map->rad,
+			up = rot(&MAP[(i - 1) * MAX_X + j], &map->rad,
 							&map->scale, &map->shift);
 			fdf_line_create(img, curr, &up, curr);
 		}

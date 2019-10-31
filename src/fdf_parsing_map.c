@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 19:48:23 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/31 15:02:16 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/31 15:33:15 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void		valid_map(t_listfdf *beg)
 	}
 }
 
-static void		fdf_map_align(t_map *map)
+static void		map_align(t_map *map)
 {
 	t_coord		center_win;
 	t_coord		center_img;
@@ -63,7 +63,7 @@ void			fdf_reset_map(t_map *map)
 	ft_memdel((void **)&map->map);
 	MAP = map->copy_map.map;
 	map->copy_map.map = ft_memdup(MAP, (MAX_X * MAX_Y) * sizeof(t_pixel));
-	collect_height(MAP, MAX_X * MAX_Y, map->height_not_zero);
+	fdf_collect_height(MAP, MAX_X * MAX_Y, map->height_not_zero);
 }
 
 void			fdf_parsing_map(t_listfdf *beg, t_map *map)
@@ -78,7 +78,7 @@ void			fdf_parsing_map(t_listfdf *beg, t_map *map)
 	map->shift.shift_y = FDF_DFLT_SHIFT_Y;
 	fdf_fit_screen_map(map);
 	fdf_collect_height_not_zero(map);
-	fdf_map_align(map);
+	map_align(map);
 	map->copy_map.map = ft_memdup(MAP, MAX_X * MAX_Y * sizeof(t_pixel));
 	map->copy_map.scale = map->scale;
 }
