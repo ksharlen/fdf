@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:17:24 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/31 14:07:15 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/31 14:16:52 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,11 +94,6 @@
 # define FDF_DOWN_ARROW		KEY_DOWN_ARROW
 
 # define FDF_SPACE			KEY_SPACE
-
-/*
-**TMP
-*/
-# define FDF_T KEY_T
 
 /*
 **MOUSE
@@ -272,7 +267,6 @@ typedef struct		s_map
 	struct s_shift	shift;
 	struct s_height	*height_not_zero;
 	size_t			size_height_not_zero;
-	// int				**height_not_zero;
 	t_pixel			*map;
 	size_t			max_x;
 	size_t			max_y;

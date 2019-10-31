@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 22:41:37 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/31 13:58:32 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/31 14:16:16 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,11 @@ static int	key_press(int key, t_mlx *mlx)
 		mlx->menu.flag_menu = (mlx->menu.flag_menu ? 0 : 1);
 	else if (key == FDF_SPACE)
 		fdf_reset_map(&mlx->map);
-	else if (key == FDF_T)
-	{
-		printf("x_rad: %f\n", mlx->map.rad.rad_x);
-		printf("x_rad: %f\n", mlx->map.rad.rad_y);
-		printf("x_rad: %f\n", mlx->map.rad.rad_z);
-	}
 	else if (CHK_IZOMETR(key))
 		fdf_event_projection(key, &mlx->map.rad);
 	if (CHK_HEIGHT(key))
-		fdf_event_height(key, mlx->map.height_not_zero, mlx->map.size_height_not_zero);
+		fdf_event_height(key, mlx->map.height_not_zero,
+						mlx->map.size_height_not_zero);
 	else if (CHK_SCALE(key))
 		fdf_event_scale(key, &mlx->map.scale);
 	else if (CHK_SHIFT(key))
