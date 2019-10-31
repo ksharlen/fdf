@@ -6,26 +6,14 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 20:21:55 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/30 17:27:47 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/31 14:35:39 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	fdf_fit_screen_map(t_map *map)
-{
-	t_coord	max_coor_map;
 
-	max_coor_map.x = MAP[FDF_LAST_ELEM_MAP].x;
-	max_coor_map.y = MAP[FDF_LAST_ELEM_MAP].y;
-	if (max_coor_map.x < (ssize_t)(WIN_X / 2) &&
-		max_coor_map.y < (ssize_t)(WIN_Y / 2))
-		fdf_in_window(map);
-	else if (max_coor_map.x > WIN_X || max_coor_map.y > WIN_Y)
-		fdf_out_window(map);
-}
-
-void	fdf_in_window(t_map *map)
+static void	fdf_in_window(t_map *map)
 {
 	t_pixel	*last_elem;
 	t_coord	need_zoom;
@@ -38,7 +26,7 @@ void	fdf_in_window(t_map *map)
 		map->scale = map->scale * FDF_ZOOM_IN;
 }
 
-void	fdf_out_window(t_map *map)
+static void	fdf_out_window(t_map *map)
 {
 	t_coord	max_map;
 
@@ -47,4 +35,17 @@ void	fdf_out_window(t_map *map)
 	while (((max_map.x * map->scale) > (ssize_t)MAX_X) ||
 		(max_map.y * map->scale) > (ssize_t)MAX_Y)
 		map->scale *= FDF_ZOOM_OUT;
+}
+
+void		fdf_fit_screen_map(t_map *map)
+{
+	t_coord	max_coor_map;
+
+	max_coor_map.x = MAP[FDF_LAST_ELEM_MAP].x;
+	max_coor_map.y = MAP[FDF_LAST_ELEM_MAP].y;
+	if (max_coor_map.x < (ssize_t)(WIN_X / 2) &&
+		max_coor_map.y < (ssize_t)(WIN_Y / 2))
+		fdf_in_window(map);
+	else if (max_coor_map.x > WIN_X || max_coor_map.y > WIN_Y)
+		fdf_out_window(map);
 }

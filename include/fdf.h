@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:17:24 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/31 14:16:52 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/31 14:48:51 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,24 +135,26 @@
 /*
 **MENU
 */
-# define FDF_ZOOM_UP	"zoom_up: <+>"
-# define FDF_ZOOM_DOWN	"zoom_down: <->"
+# define FDF_ZOOM_UP	"Zoom_up: <+>"
+# define FDF_ZOOM_DOWN	"Zoom_down: <->"
 
-# define FDF_MOV_UP		"mov_up: <w>"
-# define FDF_MOV_DOWN	"mov_down: <s>"
-# define FDF_MOV_LEFT	"mov_left: <a>"
-# define FDF_MOV_RIGHT	"mov_right: <d>"
+# define FDF_MOV_UP		"Mov_up: <w>"
+# define FDF_MOV_DOWN	"Mov_down: <s>"
+# define FDF_MOV_LEFT	"Mov_left: <a>"
+# define FDF_MOV_RIGHT	"Mov_right: <d>"
 
-# define FDF_ROT_X_L	"rot_x_left: <num_4>"
-# define FDF_ROT_X_R	"rot_x_right: <num_6>"
-# define FDF_ROT_Y_L	"rot_y_up: <num_8>"
-# define FDF_ROT_Y_R	"rot_y_down: <num_5>"
-# define FDF_ROT_Z_L	"rot_z_left: <num_7>"
-# define FDF_ROT_Z_R	"rot_z_right: <num_9>"
+# define FDF_ROT_X_L	"Rot_x_left: <num_4>"
+# define FDF_ROT_X_R	"Rot_x_right: <num_6>"
+# define FDF_ROT_Y_L	"Rot_y_up: <num_8>"
+# define FDF_ROT_Y_R	"Rot_y_down: <num_5>"
+# define FDF_ROT_Z_L	"Rot_z_left: <num_7>"
+# define FDF_ROT_Z_R	"Rot_z_right: <num_9>"
 
-# define FDF_RESET_IMG	"default: <space>"
+# define FDF_RESET_IMG	"Default: <space>"
 
-# define FDF_IZOMETR	"izometr: <i>"
+# define FDF_PROJECTION_I	"Projection_i: <i>"
+# define FDF_PROJECTION_P	"Projection_p: <p>"
+# define FDF_EXIT			"Exit: <ESC>"
 
 /*
 **ERRORS
@@ -208,6 +210,9 @@ typedef struct		s_coord
 	int	y;
 }					t_coord;
 
+/*
+**MAP
+*/
 typedef struct		s_pixel
 {
 	int	x;
@@ -216,6 +221,9 @@ typedef struct		s_pixel
 	int	color;
 }					t_pixel;
 
+/*
+**MLX_PTR
+*/
 struct				s_ptr
 {
 	void		*mlx_ptr;
@@ -242,6 +250,9 @@ struct				s_shift
 	int32_t	shift_y;
 };
 
+/*
+**COPY_MAP
+*/
 typedef struct		s_copy
 {
 	t_pixel			*map;
@@ -254,34 +265,19 @@ struct				s_menu
 	BYTE			flag_menu;
 };
 
+/*
+**FOR COLOR_MAPS AND CHANGE Z
+*/
 struct				s_height
 {
 	int	*z;
 	int	*color;
 };
 
-typedef struct		s_map
-{
-	struct s_rad	rad;
-	t_copy			copy_map;
-	struct s_shift	shift;
-	struct s_height	*height_not_zero;
-	size_t			size_height_not_zero;
-	t_pixel			*map;
-	size_t			max_x;
-	size_t			max_y;
-	float			scale;
-}					t_map;
 
-typedef struct		s_mlx
-{
-	t_map				map;
-	struct s_menu		menu;
-	struct s_ptr		mlx_ptr;
-	struct s_cfg_image	cfg_image;
-	int					*img;
-}					t_mlx;
-
+/*
+**LIST FOR READ_FILE
+*/
 typedef struct		s_listfdf
 {
 	char				*line;
@@ -294,6 +290,9 @@ struct				s_gnl
 	int			ret;
 };
 
+/*
+**FOR_BRAIN
+*/
 struct				s_line_create
 {
 	struct s_delta	delta;
@@ -309,6 +308,34 @@ struct				s_color
 	int green;
 	int blue;
 };
+
+/*
+**MAP AND CFG_MAP
+*/
+typedef struct		s_map
+{
+	struct s_rad	rad;
+	t_copy			copy_map;
+	struct s_shift	shift;
+	struct s_height	*height_not_zero;
+	size_t			size_height_not_zero;
+	t_pixel			*map;
+	size_t			max_x;
+	size_t			max_y;
+	float			scale;
+}					t_map;
+
+/*
+**MAIN_STRUCT
+*/
+typedef struct		s_mlx
+{
+	t_map				map;
+	struct s_menu		menu;
+	struct s_ptr		mlx_ptr;
+	struct s_cfg_image	cfg_image;
+	int					*img;
+}					t_mlx;
 
 /*
 **VALID
@@ -368,9 +395,6 @@ void				fdf_line_create(int *img, t_pixel beg,
 void				fdf_work_frame(t_mlx *mlx);
 void				fdf_fit_screen_map(t_map *map);
 void				fdf_scale_map(t_map *map);
-void				fdf_zooming(t_map *map, const float zoom);
-void				fdf_out_window(t_map *map);
-void				fdf_in_window(t_map *map);
 
 /*
 **FREE

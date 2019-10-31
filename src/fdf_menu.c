@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 20:14:30 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/31 13:23:54 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/31 14:48:25 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,10 @@
 #define P_Z_L 			200 * 2
 #define P_Z_R 			220 * 2
 
-#define FDF_P_RESET_IMG	240 * 2
-#define FDF_P_IZOMETR	260 * 2
+#define FDF_P_PROJ_I	240 * 2
+#define FDF_P_PROJ_P	260 * 2
+#define FDF_P_RESET_IMG	280 * 2
+#define FDF_P_EXT		300 * 2
 
 void	fdf_menu(t_mlx *mlx)
 {
@@ -49,7 +51,9 @@ void	fdf_menu(t_mlx *mlx)
 	mlx_string_put(MLX_PTR, MLX_WIN, DFLT_P, P_Y_R, COLOR, FDF_ROT_Y_R);
 	mlx_string_put(MLX_PTR, MLX_WIN, DFLT_P, P_Z_L, COLOR, FDF_ROT_Z_L);
 	mlx_string_put(MLX_PTR, MLX_WIN, DFLT_P, P_Z_R, COLOR, FDF_ROT_Z_R);
+	mlx_string_put(MLX_PTR, MLX_WIN, DFLT_P, FDF_P_PROJ_I, COLOR, FDF_PROJECTION_I);
+	mlx_string_put(MLX_PTR, MLX_WIN, DFLT_P, FDF_P_PROJ_P, COLOR, FDF_PROJECTION_P);
 	mlx_string_put(MLX_PTR, MLX_WIN, DFLT_P,
 		FDF_P_RESET_IMG, COLOR, FDF_RESET_IMG);
-	mlx_string_put(MLX_PTR, MLX_WIN, DFLT_P, FDF_P_IZOMETR, COLOR, FDF_IZOMETR);
+	mlx_string_put(MLX_PTR, MLX_WIN, DFLT_P, FDF_P_EXT, COLOR, FDF_EXIT);
 }
