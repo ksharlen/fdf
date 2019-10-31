@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:17:24 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/31 14:01:59 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/31 14:07:15 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define FDF_TITTLE	"fdf"
 # define WIN_X		2048
 # define WIN_Y 		1100
-# define FDF_DFLT_COLOR	0x0000ff
+# define FDF_DFLT_COLOR	0x00FFFF
 # define FDF_HEIGHT_COLOR 0xC71585
 # define FDF_DFLT_SCALE	1.0
 # define FDF_DFLT_SHIFT_X ((WIN_X) / 2)
