@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 20:37:19 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/31 13:53:29 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/31 13:57:45 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	fdf_event_projection(int key, struct s_rad *rad)
 		RAD_Y = 0.945437f;
 		RAD_Z = -0.662680f;
 	}
+	else if (key == FDF_P)
+		fdf_init_rad(rad);
 }
 
 void	fdf_event_height(int key, struct s_height *height_not_zero,

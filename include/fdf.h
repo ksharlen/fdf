@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:17:24 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/31 13:54:41 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/31 14:01:59 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@
 # define FDF_D				KEY_D
 # define FDF_W				KEY_W
 # define FDF_I				KEY_I
+# define FDF_P				KEY_P
 # define FDF_ESC 			KEY_ESC
 # define FDF_NUM_KEY_PLS 	KEY_NUM_PLS
 # define FDF_NUM_KEY_SUB 	KEY_NUM_SUB
@@ -133,6 +134,8 @@
 # define CHK_SCALE(key) ((key) == FDF_NUM_KEY_PLS || (key) == FDF_NUM_KEY_SUB)
 # define CHK_SHIFT(key) (PRS_A(key) || PRS_S(key) || PRS_D(key) || PRS_W(key))
 # define CHK_HEIGHT(key) ((key) == FDF_UP_ARROW || (key) == FDF_DOWN_ARROW)
+
+# define CHK_IZOMETR(key) ((key) == FDF_P || (key) == FDF_I)
 
 /*
 **MENU
@@ -379,6 +382,7 @@ void				fdf_in_window(t_map *map);
 **FREE
 */
 void				fdf_del_map(t_pixel **map);
+void				fdf_del_height_ptr(struct s_height **height);
 
 /*
 **BONUS
@@ -387,5 +391,6 @@ void				fdf_collect_height_not_zero(t_map *map);
 int					fdf_gradient(t_pixel *beg, t_pixel *curr, t_pixel *end,
 								struct s_delta *delta);
 void				fdf_menu(t_mlx *mlx);
+void				fdf_init_rad(struct s_rad *rad);
 
 #endif

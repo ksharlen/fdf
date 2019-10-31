@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 19:48:23 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/31 13:22:02 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/31 13:57:22 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void		fdf_map_align(t_map *map)
 	}
 }
 
-static void		fdf_init_rad(struct s_rad *rad)
+void			fdf_init_rad(struct s_rad *rad)
 {
 	RAD_X = 0.0;
 	RAD_Y = 0.0;

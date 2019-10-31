@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 13:29:47 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/31 13:33:50 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/31 14:02:32 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,11 @@ void	fdf_del_map(t_pixel **map)
 	}
 }
 
-//!создать после того как добавит цвет к бесцветным картам
-// void	fdf_del_height_ptr(int **height)
-// {
-	
-// }
+void	fdf_del_height_ptr(struct s_height **height)
+{
+	if (height && *height)
+	{
+		free(*height);
+		*height = NULL;
+	}
+}
