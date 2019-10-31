@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:17:24 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/31 13:23:41 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/31 13:32:40 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -265,7 +265,6 @@ typedef struct		s_map
 	size_t			max_x;
 	size_t			max_y;
 	float			scale;
-	BYTE			flag_menu;
 }					t_map;
 
 typedef struct		s_mlx
@@ -364,6 +363,11 @@ void				fdf_scale_map(t_map *map);
 void				fdf_zooming(t_map *map, const float zoom);
 void				fdf_out_window(t_map *map);
 void				fdf_in_window(t_map *map);
+
+/*
+**FREE
+*/
+void				fdf_del_map(t_pixel **map);
 
 /*
 **BONUS
