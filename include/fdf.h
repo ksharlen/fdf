@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 08:17:24 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/30 22:32:22 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/31 13:23:41 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@
 # define FDF_S				KEY_S
 # define FDF_D				KEY_D
 # define FDF_W				KEY_W
+# define FDF_I				KEY_I
 # define FDF_ESC 			KEY_ESC
 # define FDF_NUM_KEY_PLS 	KEY_NUM_PLS
 # define FDF_NUM_KEY_SUB 	KEY_NUM_SUB
@@ -91,6 +92,11 @@
 # define FDF_DOWN_ARROW		KEY_DOWN_ARROW
 
 # define FDF_SPACE			KEY_SPACE
+
+/*
+**TMP
+*/
+# define FDF_T KEY_T
 
 /*
 **MOUSE
@@ -146,6 +152,8 @@
 # define FDF_ROT_Z_R	"rot_z_right: <num_9>"
 
 # define FDF_RESET_IMG	"default: <space>"
+
+# define FDF_IZOMETR	"izometr: <i>"
 
 /*
 **ERRORS
@@ -337,6 +345,7 @@ void				fdf_event_scale(int key, float *scale);
 void				fdf_event_shift(int key, struct s_shift *shift);
 void				fdf_event_rad(int key, struct s_rad *rad);
 void				fdf_event_height(int key, int **height_not_zero);
+void				fdf_event_projection(int key, struct s_rad *rad);
 
 /*
 **ERRORS

@@ -6,15 +6,29 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 20:37:19 by ksharlen          #+#    #+#             */
-/*   Updated: 2019/10/30 21:10:25 by ksharlen         ###   ########.fr       */
+/*   Updated: 2019/10/31 13:21:17 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+#define RAD_X rad->rad_x
+#define RAD_Y rad->rad_y
+#define RAD_Z rad->rad_z
+
 #define SHIFT_X shift->shift_x
 #define SHIFT_Y shift->shift_y
 #define SCALE	*scale
+
+void	fdf_event_projection(int key, struct s_rad *rad)
+{
+	if (key == FDF_I)
+	{
+		RAD_X = -0.662680f;
+		RAD_Y = 0.945437f;
+		RAD_Z = -0.662680f;
+	}
+}
 
 void	fdf_event_height(int key, int **height_not_zero)
 {
