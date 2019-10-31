@@ -4,6 +4,3 @@
 [submodule "lib/libft"]
 	path = lib/libft
 	url = https://github.com/ksharlen/libft.git
-[submodule "lib/linal"]
-	path = lib/linal
-	url = https://github.com/AloySobek/LinearAlgebraForC.git
